@@ -1,0 +1,29 @@
+.body {
+	padding: 50px;
+	/*      margin: 50 50; */
+}
+
+p {
+	line-height: 2em;
+	text-indent: 2em;
+	font-style: normal;
+}
+
+.heads {
+	background: linear-gradient(to bottom, #086ed5, #055db5);
+}
+
+.footer {
+	padding: 10px 0px 15px;
+	background-color: #515151;
+	text-align: center;
+	color: #fff
+}
+
+.footer  img {
+	margin: 0px
+}
+
+.footer .footer-menu {
+	margin: 20px auto
+}
