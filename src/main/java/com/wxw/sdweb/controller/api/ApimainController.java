@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wxw.sdweb.Result;
@@ -15,17 +14,21 @@ import com.wxw.sdweb.service.IMenuService;
 import com.wxw.sdweb.util.ResultUtils;
 import com.wxw.sdweb.vo.Menu;
 
-
 @RestController
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
-public class ApiMenuController {
-	
+public class ApimainController {
 	@Autowired
 	private IMenuService menuService;
 	
+	/**
+	 * 菜单获取
+	 * 王宣武
+	 * 2018-07-04
+	 * @return
+	 */
 	@SuppressWarnings("rawtypes")
-	@RequestMapping("/api/v1/getMenus01")
-	public Result menulist01() {
+	@RequestMapping("/api/v1/getMenus")
+	public Result menulist() {
 		List<Menu> menus = menuService.findAll();
 		if (null != menus) {
 			return ResultUtils.success(menus);
@@ -33,4 +36,8 @@ public class ApiMenuController {
 			return ResultUtils.warn(ResultCode.PARAMETER_ERROR);
 		}
 	}
+	
+	
+	
+	
 }

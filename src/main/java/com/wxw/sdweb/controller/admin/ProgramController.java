@@ -60,7 +60,6 @@ public class ProgramController {
 		ModelAndView mv = new ModelAndView("/admin/video/program_add");
 		map.put("objs", objs);
 		return mv;
-
 	}
 	
 	
