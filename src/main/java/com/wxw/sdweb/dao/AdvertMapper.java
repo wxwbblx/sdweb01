@@ -13,7 +13,7 @@ import com.wxw.sdweb.vo.Advert;
 @Mapper
 public interface AdvertMapper {
 	
-	@Select("select * from  Advert order by orders asc")
+	@Select("select * from  Advert order by adtime desc")
 	public List<Advert> findAll();
 
 	@Select("select * from Advert where id  = #{id}")

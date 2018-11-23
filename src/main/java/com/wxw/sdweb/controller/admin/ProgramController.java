@@ -56,8 +56,7 @@ public class ProgramController {
 		
 		//return program.getId();
 		
-		List<Program> objs = programService.findAll();
-		
+		List<Program> objs = programService.findAll();		
 		ModelAndView mv = new ModelAndView("/admin/video/program_add");
 		map.put("objs", objs);
 		return mv;
