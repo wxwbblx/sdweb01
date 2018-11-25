@@ -103,7 +103,7 @@ window.UMEDITOR_HOME_URL = 'umeditor/';  // 请换成绝对路径
 	                    <span class="kv-item-tip">标题字数限制在35个字符</span>
 	                </div>
 	                
-	                
+	                <!--  
 	                <div class="kv-item ue-clear">
 	                	<label><span class="impInfo">*</span>广告内容上传</label>
 	                	<div class="kv-item-content file">
@@ -112,8 +112,30 @@ window.UMEDITOR_HOME_URL = 'umeditor/';  // 请换成绝对路径
 	                        <input type="button" class="button normal long2" value="浏览.." />
 	                    </div>
 	                    <span class="kv-item-tip">标题字数限制在35个字符</span>
+	                </div>-->
+	            </div>
+	            <h2 class="subfild">
+	            	<span>广告内容</span>
+	            </h2>
+	            <div class="subfild-content remarkes-info">
+	            	 <div class="kv-item ue-clear">
+	                	<label>图片预览</label>
+	                	<div class="kv-item-content">
+	                    	<img border="1" src="../../images/1.jpg"  width="400" height="400" alt="图片预览" />
+	                    </div>
+	                    <span class="kv-item-tip success">成功信息</span>
+	                </div>
+	            	<div class="kv-item ue-clear">
+	                	<label><span class="impInfo">*</span>广告内容</label>
+	                	<div class="kv-item-content file">
+							<span class="text"></span>
+	                        <input type="file"  name="file" />
+	                        <input type="button" class="button normal long2" value="浏览.." onchange = "selectFile()"/>
+	                    </div>
+	                    <span class="kv-item-tip">标题字数限制在35个字符</span>
 	                </div>
 	            </div>
+	            
 	            <h2 class="subfild">
 	            	<span>备注资料</span>
 	            </h2>
@@ -141,5 +163,46 @@ window.UMEDITOR_HOME_URL = 'umeditor/';  // 请换成绝对路径
     </div>
     
 </div>
+ <script type="text/javascript">
+        //var files = document.getElementById('pic').files;
+        var form = new FormData();//通过HTML表单创建FormData对象
+        var url = '127.0.0.1:8080/'
+        function selectFile(){
+            var files = document.getElementById('pic').files;
+            console.log(files[0]);
+            if(files.length == 0){
+                return;
+            }
+            var file = files[0];
+            //把上传的图片显示出来
+            var reader = new FileReader();
+            // 将文件以Data URL形式进行读入页面
+            console.log(reader);
+            reader.readAsBinaryString(file);
+            reader.onload = function(f){
+                var result = document.getElementById("result");
+                var src = "data:" + file.type + ";base64," + window.btoa(this.result);
+                result.innerHTML = '<img src ="'+src+'"/>';
+            }
+            console.log('file',file);
+            ///////////////////
+            form.append('file',file);
+            console.log(form.get('file'));
+        }
+        //var xhr = new XMLHttpRequest();
+        // function handIn(){
+        //  console.log(form.get('file'));
+        //  xhr.open("post", url, true);
+        //  xhr.addEventListener("readystatechange", function() {  
+        //      var result = xhr;  
+        //      if (result.status != 200) { //error  
+        //          console.log('上传失败', result.status, result.statusText, result.response);  
+        //      }   
+        //      else if (result.readyState == 4) { //finished  
+        //          console.log('上传成功', result);  
+        //      }  
+        //  });   
+        // }
+    </script>
 </body>
 </html>
