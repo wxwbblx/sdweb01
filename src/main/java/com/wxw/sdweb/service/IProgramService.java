@@ -9,6 +9,8 @@ public interface IProgramService {
 
 	List<Program> findByDate(String pdate);
 
+	List<Program> findByIsnew(int isnew);
+
 	Program find(int id);
 
 	int delete(int id);

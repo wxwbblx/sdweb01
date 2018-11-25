@@ -9,7 +9,6 @@ import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-
 import com.wxw.sdweb.vo.Program;
 
 @Mapper
@@ -17,9 +16,12 @@ public interface ProgramMapper {
 
 	@Select("select * from  program order by pstime asc")
 	public List<Program> findAll();
-	
+
 	@Select("select * from program where pdate  = #{pdate}  order by pstime asc")
 	public List<Program> findBydate(String pdate);
+
+	@Select("select * from program where isnew  = #{isnew}  order by pstime asc")
+	public List<Program> findIsNew(int isnew);
 
 	@Select("select * from program where id  = #{id}")
 	public Program find(int id);

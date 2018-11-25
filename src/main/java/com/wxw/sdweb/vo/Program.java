@@ -11,6 +11,7 @@ public class Program {
 	private String pname;
 	private int plength;
 	private String purl;
+	private int isnew;
 	private String remark;
 
 	public int getId() {
@@ -59,6 +60,14 @@ public class Program {
 
 	public void setPurl(String purl) {
 		this.purl = purl;
+	}
+
+	public int getIsnew() {
+		return isnew;
+	}
+
+	public void setIsnew(int isnew) {
+		this.isnew = isnew;
 	}
 
 	public String getRemark() {

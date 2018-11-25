@@ -42,11 +42,12 @@ public class ApimainController {
 			return ResultUtils.warn(ResultCode.PARAMETER_ERROR);
 		}
 	}
-	
+
 	/**
 	 * 广告获取
 	 * 王宣武
 	 * 2018-07-04
+	 * @param adpage
 	 * @return
 	 */
 	@SuppressWarnings("rawtypes")

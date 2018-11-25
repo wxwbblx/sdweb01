@@ -113,6 +113,7 @@
 	                <th scope="col">时间</td>
 	                <th scope="col">名称</td>
 	                <th scope="col">长度(分钟)</td>
+	                <th scope="col">是否最新</td>
 	                <th scope="col">备注</td>
 	                <th align="center" scope="col" colspan="2">操作</td>
 	               
@@ -124,7 +125,8 @@
 	                <td th:text="${obj.pdate}">1</td>
 	                <td th:text="${obj.pstime}">1</td>
 	                <td th:text="${obj.pname}">2asdfasdf</td>
-	                <td th:text="${obj.plength}">2asdfasdf</td>	               
+	                <td th:text="${obj.plength}">2asdfasdf</td>	
+	                 <td th:text="${obj.isnew}">2asdfasdf</td>	              
 	                <td th:text="${obj.remark}">2asdfasdf</td>
 	                <td ><a th:href="@{/admin/prog_update(id=${obj.id})}">修改</a></td>
 	                

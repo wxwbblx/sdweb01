@@ -50,4 +50,10 @@ public class ProgramServiceImpl implements IProgramService {
 		return objs;
 	}
 
+	@Override
+	public List<Program> findByIsnew(int isnew) {
+		List<Program> objs = programDao.findIsNew(isnew);
+		return objs;
+	}
+
 }

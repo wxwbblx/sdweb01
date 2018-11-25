@@ -1,5 +1,7 @@
 package com.wxw.sdweb.controller.api;
 
+
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +25,7 @@ public class ApiProgramController {
 	private IProgramService programService;
 
 	@SuppressWarnings("rawtypes")
-	@RequestMapping("/api/v1/getPrograms")
+	@RequestMapping("/api/v1/programs/getall/")
 	public Result objslist() {
 		List<Program> objs = programService.findAll();
 		if (null != objs) {
@@ -32,11 +34,45 @@ public class ApiProgramController {
 			return ResultUtils.warn(ResultCode.PARAMETER_ERROR);
 		}
 	}
+
+	@SuppressWarnings("rawtypes")
+	@RequestMapping(value = "/api/v1/programs/getcurrlist", method = RequestMethod.GET)
+	public Result getCurrList() {
+		String pdate = new java.sql.Date(new Date().getTime()).toString();  
+		List<Program> objs = programService.findByDate(pdate);
+		if (null != objs) {
+			return ResultUtils.success(objs);
+		} else {
+			return ResultUtils.warn(ResultCode.PARAMETER_ERROR);
+		}
+	}
 	
 	@SuppressWarnings("rawtypes")
-	@RequestMapping(value="/api/v1/getPrograms/{pdate}", method = RequestMethod.GET)
+	@RequestMapping(value = "/api/v1/programs/getdate/{pdate}", method = RequestMethod.GET)
 	public Result objslist(@PathVariable("pdate") String pdate) {
 		List<Program> objs = programService.findByDate(pdate);
+		if (null != objs) {
+			return ResultUtils.success(objs);
+		} else {
+			return ResultUtils.warn(ResultCode.PARAMETER_ERROR);
+		}
+	}
+
+	@SuppressWarnings("rawtypes")
+	@RequestMapping(value = "/api/v1/programs/getnew", method = RequestMethod.GET)
+	public Result objsnewlist() {
+		List<Program> objs = programService.findByIsnew(1);
+		if (null != objs) {
+			return ResultUtils.success(objs);
+		} else {
+			return ResultUtils.warn(ResultCode.PARAMETER_ERROR);
+		}
+	}
+
+	@SuppressWarnings("rawtypes")
+	@RequestMapping(value = "/api/v1/programs/getnew/{isnew}", method = RequestMethod.GET)
+	public Result objsnewlist(@PathVariable("isnew") int isnew) {
+		List<Program> objs = programService.findByIsnew(isnew);
 		if (null != objs) {
 			return ResultUtils.success(objs);
 		} else {
