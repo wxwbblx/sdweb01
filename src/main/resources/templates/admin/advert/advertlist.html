@@ -25,6 +25,7 @@
 			<div id="main">
 				<div class="search-box ue-clear">
 					<div class="search-area">
+					<!-- 
 						<div class="kv-item ue-clear">
 							<label>选择时间：</label>
 							<div class="kv-item-content ue-clear">
@@ -50,13 +51,14 @@
 								</span>
 							</div>
 						</div>
+						 -->
 						<div class="kv-item ue-clear">
-							<label>选择类型:</label>
+							<label>广告页面选择:</label>
 							<div class="kv-item-content">
 								<select>
 									<option>全部</option>
-									<option>全部</option>
-									<option>全部</option>
+									<option>首页</option>
+									<option>次级页面</option>
 								</select>
 							</div>
 						</div>
@@ -73,7 +75,7 @@
 									class="text">名称</span>
 							</span>
 						</span> <i class="list"></i> <i class="card"></i>
-						</span> <span class="optarea"> <a href="/admin/prog_add_load"
+						</span> <span class="optarea"> <a href="/admin/ad/load_add"
 							class="add"> <i class="icon"></i> <span class="text">添加</span>
 						</a>
 						</span>
@@ -98,11 +100,12 @@
 								</td>
 								<th scope="col">位置
 								</td>
+								<th scope="col">是否启用
+								</td>
 								<th scope="col">备注
 								</td>
 								<th align="center" scope="col" colspan="2">操作
 								</td>
-
 							</tr>
 						</thead>
 						<tbody>
@@ -110,14 +113,15 @@
 								<td class="ui-table-td" th:text="${obj.id}">111</td>
 								<td th:text="${obj.adname}">1</td>
 								<td th:text="${obj.adtitle}">1</td>
-								<td th:text="${obj.adtype}">2asdfasdf</td>
-								<td th:text="${obj.adurl}">2asdfasdf</td>
-								<td th:text="${obj.adtime}">2asdfasdf</td>
-								<td th:text="${obj.adpage}">2asdfasdf</td>
-								<td th:text="${obj.remark}">2asdfasdf</td>
-								<td><a th:href="@{/admin/prog_update(id=${obj.id})}">修改</a></td>
+								<td th:text="${obj.adtype}">2</td>
+								<td th:text="${obj.adurl}">2</td>
+								<td th:text="${obj.adtime}">2</td>
+								<td th:text="${obj.adpage}">2</td>
+								<td th:text="${obj.isenable}">2</td>
+								<td th:text="${obj.remark}">2</td>
+								<td><a th:href="@{/admin/ad/update(id=${obj.id})}">修改</a></td>
 
-								<td><a th:href="@{/admin/prog_del(id=${obj.id})}">删除</a></td>
+								<td><a th:href="@{/admin/ad/del(id=${obj.id})}">删除</a></td>
 							</tr>
 						</tbody>
 					</table>

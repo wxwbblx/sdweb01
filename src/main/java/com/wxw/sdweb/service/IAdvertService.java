@@ -12,6 +12,9 @@ import com.wxw.sdweb.vo.Advert;
 public interface IAdvertService {
 
 	List<Advert> findAll();
+	
+	
+	List<Advert> findByPage(String adpage);
 
 	Advert find(int id);
 

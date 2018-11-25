@@ -17,6 +17,9 @@ public interface ProgramMapper {
 
 	@Select("select * from  program order by pstime asc")
 	public List<Program> findAll();
+	
+	@Select("select * from program where pdate  = #{pdate}  order by pstime asc")
+	public List<Program> findBydate(String pdate);
 
 	@Select("select * from program where id  = #{id}")
 	public Program find(int id);

@@ -7,6 +7,8 @@ import com.wxw.sdweb.vo.Program;
 public interface IProgramService {
 	List<Program> findAll();
 
+	List<Program> findByDate(String pdate);
+
 	Program find(int id);
 
 	int delete(int id);

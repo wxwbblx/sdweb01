@@ -44,4 +44,10 @@ public class ProgramServiceImpl implements IProgramService {
 		return programDao.update(program);
 	}
 
+	@Override
+	public List<Program> findByDate(String pdate) {
+		List<Program> objs = programDao.findBydate(pdate);
+		return objs;
+	}
+
 }

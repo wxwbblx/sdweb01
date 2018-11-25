@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wxw.sdweb.Result;
@@ -24,6 +26,17 @@ public class ApiProgramController {
 	@RequestMapping("/api/v1/getPrograms")
 	public Result objslist() {
 		List<Program> objs = programService.findAll();
+		if (null != objs) {
+			return ResultUtils.success(objs);
+		} else {
+			return ResultUtils.warn(ResultCode.PARAMETER_ERROR);
+		}
+	}
+	
+	@SuppressWarnings("rawtypes")
+	@RequestMapping(value="/api/v1/getPrograms/{pdate}", method = RequestMethod.GET)
+	public Result objslist(@PathVariable("pdate") String pdate) {
+		List<Program> objs = programService.findByDate(pdate);
 		if (null != objs) {
 			return ResultUtils.success(objs);
 		} else {

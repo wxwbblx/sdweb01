@@ -32,20 +32,25 @@ public class AdvertServiceImpl implements IAdvertService {
 
 	@Override
 	public int delete(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+		return advertDao.delete(id);
 	}
 
 	@Override
 	public int insert(Advert obj) {
 		// TODO Auto-generated method stub
-		return 0;
+		return  advertDao.insert(obj);
 	}
 
 	@Override
 	public int update(Advert obj) {
 		// TODO Auto-generated method stub
-		return 0;
+		return advertDao.update(obj);
+	}
+
+	@Override
+	public List<Advert> findByPage(String adpage) {
+		List<Advert> objs = advertDao.findByPage(adpage);
+		return objs;
 	}
 
 }
