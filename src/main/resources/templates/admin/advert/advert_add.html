@@ -123,16 +123,22 @@ window.UMEDITOR_HOME_URL = 'umeditor/';  // 请换成绝对路径
 	                	<div class="kv-item-content">
 	                    	<img border="1" src="../../images/1.jpg"  width="400" height="400" alt="图片预览" />
 	                    </div>
-	                    <span class="kv-item-tip success">成功信息</span>
+	                    <span class="kv-item-tip success"></span>
 	                </div>
 	            	<div class="kv-item ue-clear">
 	                	<label><span class="impInfo">*</span>广告内容</label>
 	                	<div class="kv-item-content file">
 							<span class="text"></span>
-	                        <input type="file"  name="file" />
-	                        <input type="button" class="button normal long2" value="浏览.." onchange = "selectFile()"/>
+							 <!--  <input type="file" multiple class="file" accept="image/*" >-->
+							 <input type="file" multiple class="file" name="file" accept="image/*"/>
+							  <input type="button" class="button normal long2" value="浏览.." onchange = "selectFile()"/>
+                               <img src="" alt="">
+                               <br/>
+                                                   <button>点击上传</button>
+	                      <!--   <input type="file"  name="file" accept="image/*"/>
+	                        <input type="button" class="button normal long2" value="浏览.." onchange = "selectFile()"/> -->
 	                    </div>
-	                    <span class="kv-item-tip">标题字数限制在35个字符</span>
+	                    <span class="kv-item-tip"></span>
 	                </div>
 	            </div>
 	            
@@ -163,46 +169,70 @@ window.UMEDITOR_HOME_URL = 'umeditor/';  // 请换成绝对路径
     </div>
     
 </div>
- <script type="text/javascript">
-        //var files = document.getElementById('pic').files;
-        var form = new FormData();//通过HTML表单创建FormData对象
-        var url = '127.0.0.1:8080/'
-        function selectFile(){
-            var files = document.getElementById('pic').files;
-            console.log(files[0]);
-            if(files.length == 0){
-                return;
-            }
-            var file = files[0];
-            //把上传的图片显示出来
-            var reader = new FileReader();
-            // 将文件以Data URL形式进行读入页面
-            console.log(reader);
-            reader.readAsBinaryString(file);
-            reader.onload = function(f){
-                var result = document.getElementById("result");
-                var src = "data:" + file.type + ";base64," + window.btoa(this.result);
-                result.innerHTML = '<img src ="'+src+'"/>';
-            }
-            console.log('file',file);
-            ///////////////////
-            form.append('file',file);
-            console.log(form.get('file'));
-        }
-        //var xhr = new XMLHttpRequest();
-        // function handIn(){
-        //  console.log(form.get('file'));
-        //  xhr.open("post", url, true);
-        //  xhr.addEventListener("readystatechange", function() {  
-        //      var result = xhr;  
-        //      if (result.status != 200) { //error  
-        //          console.log('上传失败', result.status, result.statusText, result.response);  
-        //      }   
-        //      else if (result.readyState == 4) { //finished  
-        //          console.log('上传成功', result);  
-        //      }  
-        //  });   
-        // }
-    </script>
+
+    
 </body>
+<script>
+  var eleFile = document.querySelector('.file');
+  var image = document.querySelector("img")
+  var button = document.querySelector("button")
+  // 压缩图片需要的一些元素和对象
+  var targetWidth, targetHeight
+  var reader = new FileReader(),
+  img = new Image();
+ 
+  // 选择的文件对象
+  var file = null;
+ 
+  // base64地址图片加载完毕后
+  img.onload = function () {
+    // 图片原始尺寸
+    var originWidth = this.width;
+    var originHeight = this.height;
+    // 最大尺寸限制
+    var maxWidth = 600,
+      maxHeight = 500;
+    // 目标尺寸
+    targetWidth = originWidth,
+      targetHeight = originHeight;
+    // 图片尺寸超过400x400的限制
+    if (originWidth > maxWidth || originHeight > maxHeight) {
+      if (originWidth / originHeight > maxWidth / maxHeight) {
+        // 更宽，按照宽度限定尺寸
+        targetWidth = maxWidth;
+        targetHeight = Math.round(targetWidth* (originHeight / originWidth));
+      } else {
+        targetHeight = maxHeight;
+        targetWidth = Math.round(targetHeight* (originWidth / originHeight));
+      }
+    }
+    image.width = targetWidth
+    image.height = targetHeight
+  };
+ 
+  // 文件base64化，以便获知图片原始尺寸
+  reader.onload = function (e) {
+    img.src = e.target.result;
+    image.src = e.target.result
+  };
+  eleFile.addEventListener('change', function (event) {
+    file = event.target.files[0];
+    // 选择的文件是图片
+    if (file.type.indexOf("image") == 0) {
+      reader.readAsDataURL(file);
+    }
+  });
+  button.addEventListener('click', function () {
+    if (!file) {
+      return
+    }
+    var formData = new FormData()
+    formData.append(file.name, file)
+    uploadImage(formData)
+  })
+ 
+  function uploadImage(formdata) {
+    // ....调用ajax上传图片
+  }
+</script>
 </html>

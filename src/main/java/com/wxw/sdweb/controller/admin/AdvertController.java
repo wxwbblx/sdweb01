@@ -1,5 +1,6 @@
 package com.wxw.sdweb.controller.admin;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
@@ -14,9 +15,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+
 import com.wxw.sdweb.service.IAdvertService;
 import com.wxw.sdweb.vo.Advert;
 import com.wxw.sdweb.vo.Program;
+
+
+import java.util.UUID;
 
 /***********************************************
  * 
@@ -76,10 +81,9 @@ public class AdvertController {
 			@RequestParam("isenable") String isenable,
 			@RequestParam("remark") String remark) {
 		
-		//System.out.println(file.getOriginalFilename());
-		/*if(file.isEmpty()){
-            return "false";
-        }*/
+		String filename=file.getOriginalFilename();
+		String prefix=filename.substring(filename.lastIndexOf("."));
+		//final File excelFile = file.createTempFile(UUIDGenerator.getUUID(), prefix);
 		
 		Advert obj = new Advert();
 		obj.setAdname(adname);
@@ -87,7 +91,7 @@ public class AdvertController {
 		obj.setAdtype(adtype);
 		obj.setAdpage(adpage);
 		obj.setAdtime(adtime);
-		obj.setAdurl("www.163.com");
+		obj.setAdurl(filename);
 		obj.setIsenable(isenable);
 		obj.setRemark(remark);
 
