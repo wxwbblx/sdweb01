@@ -29,7 +29,7 @@ public interface AdvertMapper {
 	@Delete("delete from Advert where id  = #{id}")
 	public int delete(int id);
 
-	@Update("update Advert set adname=#{adname},adtitle=#{adtitle},adtype=#{adtype},adurl=#{adurl},adtime=#{adtime},adpage=#{adpage},isenable=#{isenable},remark#{remark}  from  where id  = #{id}")
+	@Update("update Advert set adname=#{adname},adtitle=#{adtitle},adtype=#{adtype},adurl=#{adurl},adtime=#{adtime},adpage=#{adpage},isenable=#{isenable},remark=#{remark}  where id  = #{id}")
 	public int update(Advert obj);
 
 	@Insert("insert into advert " + "(adname,adtitle,adtype,adurl,adtime,adpage,isenable,remark) "

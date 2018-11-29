@@ -26,8 +26,8 @@ public class AdvertServiceImpl implements IAdvertService {
 
 	@Override
 	public Advert find(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Advert obj = advertDao.find(id);
+		return obj;
 	}
 
 	@Override

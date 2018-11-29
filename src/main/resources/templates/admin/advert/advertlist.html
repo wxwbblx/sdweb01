@@ -57,8 +57,10 @@
 							<div class="kv-item-content">
 								<select>
 									<option>全部</option>
-									<option>首页</option>
-									<option>次级页面</option>
+									<option>影视热播</option>
+									<option>综合精选</option>
+									<option>影视专区</option>
+									<option>综合专区</option>
 								</select>
 							</div>
 						</div>
@@ -114,12 +116,12 @@
 								<td th:text="${obj.adname}">1</td>
 								<td th:text="${obj.adtitle}">1</td>
 								<td th:text="${obj.adtype}">2</td>
-								<td th:text="${obj.adurl}">2</td>
+								<td ><img src="#" width="80" height="30" th:src="${obj.adurl}" alt="二维码" /></td>
 								<td th:text="${obj.adtime}">2</td>
 								<td th:text="${obj.adpage}">2</td>
-								<td th:text="${obj.isenable}">2</td>
+								<td th:switch="${obj.isenable}"><p th:case="'1'">启用</p><p th:case="'0'">禁用</p></td>
 								<td th:text="${obj.remark}">2</td>
-								<td><a th:href="@{/admin/ad/update(id=${obj.id})}">修改</a></td>
+								<td><a th:href="@{/admin/ad/load_update(id=${obj.id})}">修改</a></td>
 
 								<td><a th:href="@{/admin/ad/del(id=${obj.id})}">删除</a></td>
 							</tr>
