@@ -131,7 +131,6 @@ public class AdvertController {
 			mv = new ModelAndView("redirect:/admin/ad/load");
 		}
 		return mv;
-
 	}
 
 }
