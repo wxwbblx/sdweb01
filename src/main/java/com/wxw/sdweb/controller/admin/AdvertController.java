@@ -1,6 +1,8 @@
 package com.wxw.sdweb.controller.admin;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -80,9 +83,10 @@ public class AdvertController {
 			@RequestParam("file") MultipartFile file,
 			@RequestParam("isenable") String isenable,
 			@RequestParam("remark") String remark) {
+		  String furl= uploadFile(file);
 		
-		String filename=file.getOriginalFilename();
-		String prefix=filename.substring(filename.lastIndexOf("."));
+		
+		
 		//final File excelFile = file.createTempFile(UUIDGenerator.getUUID(), prefix);
 		
 		Advert obj = new Advert();
@@ -91,7 +95,7 @@ public class AdvertController {
 		obj.setAdtype(adtype);
 		obj.setAdpage(adpage);
 		obj.setAdtime(adtime);
-		obj.setAdurl(filename);
+		obj.setAdurl(furl);
 		obj.setIsenable(isenable);
 		obj.setRemark(remark);
 
@@ -135,6 +139,34 @@ public class AdvertController {
 			mv = new ModelAndView("redirect:/admin/ad/load");
 		}
 		return mv;
+	}
+	
+	
+	private String uploadFile(MultipartFile file)
+	{
+		String filename=file.getOriginalFilename();
+		String prefix=filename.substring(filename.lastIndexOf("."));
+		
+		String path="";
+		try {
+			path = ResourceUtils.getURL("classpath:").getPath();
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+				//"localhost:8080/static/images01/advert/";
+		System.out.println(path);
+       
+        String newName = UUID.randomUUID().toString() + prefix;
+        //System.out.println("重命名的文件名：" + newName);
+        File file01 = new File(path, newName);
+        try {
+			file.transferTo(file01);
+		} catch (IllegalStateException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}// 文件写入
+		return path+newName;
 	}
 
 }
