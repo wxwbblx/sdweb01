@@ -128,7 +128,7 @@ window.UMEDITOR_HOME_URL = 'umeditor/';  // 请换成绝对路径
 	            	 <div class="kv-item ue-clear">
 	                	<label>图片预览</label>
 	                	<div class="kv-item-content">
-	                    	<img border="1" src="#" th:scr="${obj.adurl}" width="400" height="400" alt="图片预览" />
+	                    	<img border="1" th:scr="${obj.adurl}" width="400" height="400" alt="图片预览" />
 	                    </div>
 	                    <input type="hidden" placeholder="广告编号" name="adurl" maxlength="30" 
 	                    	value="James Carrot" th:value="${obj.adurl}"/>
@@ -141,7 +141,7 @@ window.UMEDITOR_HOME_URL = 'umeditor/';  // 请换成绝对路径
 							 <!--  <input type="file" multiple class="file" accept="image/*" >-->
 							 <input type="file" multiple class="file" name="file" accept="image/*"/>
 							  <input type="button" class="button normal long2" value="浏览.." onchange = "selectFile()"/>
-                               <img src="" alt="" th:scr="${obj.adurl}">
+                               <img alt="" th:scr="${obj.adurl}">
                               
 	                      <!--   <input type="file"  name="file" accept="image/*"/>
 	                        <input type="button" class="button normal long2" value="浏览.." onchange = "selectFile()"/> -->
