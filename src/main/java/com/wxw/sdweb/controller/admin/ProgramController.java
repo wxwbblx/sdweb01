@@ -8,6 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.wxw.sdweb.service.IProgramService;
@@ -53,9 +56,6 @@ public class ProgramController {
 	@ResponseBody
 	public ModelAndView loadProgAddLoad(Map<String, Object> map) {
 
-		
-		//return program.getId();
-		
 		List<Program> objs = programService.findAll();		
 		ModelAndView mv = new ModelAndView("/admin/video/program_add");
 		map.put("objs", objs);
@@ -72,7 +72,11 @@ public class ProgramController {
 	 */
 	@RequestMapping(value = "/admin/prog_add", method = RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView loadProgAdd(Map<String, Object> map) {
+	public ModelAndView loadProgAdd(Map<String, Object> map,@RequestParam("adname") String adname,
+			@RequestParam("adtitle") String adtitle, @RequestParam("adtype") String adtype,
+			@RequestParam("adpage") String adpage, @RequestParam("adtime") String adtime,
+			@RequestParam("file") MultipartFile file, @RequestParam("isenable") String isenable,
+			@RequestParam("remark") String remark, HttpServletRequest request) {
         Program program=new Program();	
         Date date= new java.sql.Date(new java.util.Date().getTime());
         program.setPdate(date);
@@ -80,6 +84,7 @@ public class ProgramController {
         program.setPstime(null);
         program.setRemark("beizhu");
         System.out.println(program);
+        //============================================
 		int rows = programService.insert(program);
 		ModelAndView mv=null;
 		if(rows==0) {
