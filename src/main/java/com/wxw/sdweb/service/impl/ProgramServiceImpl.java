@@ -56,4 +56,10 @@ public class ProgramServiceImpl implements IProgramService {
 		return objs;
 	}
 
+	@Override
+	public List<Program> findByType(String ptype) {
+		List<Program> objs = programDao.findByType(ptype);
+		return objs;
+	}
+
 }

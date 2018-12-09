@@ -20,7 +20,7 @@ public interface MenuMapper {
 	public List<Menu> findAll();
 
 	@Select("select * from menu where id  = #{id}")
-	public Menu find(int id);
+	public List<Menu> findById(int id);
 
 	@Select("select * from menu where mname  = #{mname}")
 	public Menu findbyname(String mname);

@@ -7,7 +7,9 @@ import com.wxw.sdweb.vo.Menu;
 public interface IMenuService {
 	List<Menu> findAll();
 
-	Menu find(int id);
+	Menu findById(int id);
 
 	int delete(int id);
+
+	
 }

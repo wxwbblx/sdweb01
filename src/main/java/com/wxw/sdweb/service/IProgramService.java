@@ -7,6 +7,8 @@ import com.wxw.sdweb.vo.Program;
 public interface IProgramService {
 	List<Program> findAll();
 
+	List<Program> findByType(String ptype);
+
 	List<Program> findByDate(String pdate);
 
 	List<Program> findByIsnew(int isnew);

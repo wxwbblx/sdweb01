@@ -24,15 +24,23 @@ public class MenuServiceImpl implements IMenuService {
 	}
 
 	@Override
-	public Menu find(int id) {
-		Menu menu = menuDao.find(id);
-		return menu;
-	}
-
-	@Override
 	public int delete(int id) {
 		int row = menuDao.delete(id);
 		return row;
 	}
+
+	@Override
+	public Menu findById(int id) {
+		List<Menu> objs = menuDao.findById(id);
+		Menu obj=null;
+		if(objs.size()>0)
+		{
+			obj=objs.get(0);
+		}
+		System.out.println("aaaaaaaa:"+objs.size());
+		return obj;
+	}
+
+
 
 }

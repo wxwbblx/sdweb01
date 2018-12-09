@@ -22,6 +22,14 @@ public interface ProgramMapper {
 
 	@Select("select * from program where isnew  = #{isnew}  order by pstime asc")
 	public List<Program> findIsNew(int isnew);
+	
+
+	@Select("select * from  program where ptype=#{ptype} order by pstime asc")
+	public List<Program> findByType(String ptype);
+	
+	
+	
+	
 
 	@Select("select * from program where id  = #{id}")
 	public Program find(int id);
@@ -32,10 +40,26 @@ public interface ProgramMapper {
 	@Delete("delete from program where id  = #{id}")
 	public int delete(int id);
 
-	@Update("update program set pdate=#{pdate},pstime=#{pstime},pname=#{pname},plength=#{plength},purl=#{purl},remark=#{remark} from  where id  = #{id}")
+	//@Update("update program set pdate=#{pdate,jdbcType=DATE},pstime=#{pstime,jdbcType=VARCHAR},pname=#{pname,jdbcType=VARCHAR},plength=#{plength,jdbcType=INTEGER},purl=#{purl,jdbcType=VARCHAR},remark=#{remark,jdbcType=VARCHAR},isnew=#{isnew,jdbcType=VARCHAR},ptype=#{ptype,jdbcType=VARCHAR} from where id = #{id}")
+	
+	@Update("update program set pdate=#{pdate},pstime=#{pstime},pname=#{pname},plength=#{plength},purl=#{purl},remark=#{remark},"
+			+ "isnew=#{isnew},ptype=#{ptype} where id = #{id}")
 	public int update(Program program);
 
-	@Insert("insert into program (pdate,pstime,pname,plength,purl,remark) values( #{pdate},#{pstime},#{pname},#{plength},#{purl},#{remark})")
+	@Insert("insert into program (pdate,pstime,pname,plength,purl,isnew,ptype,remark) values( #{pdate},#{pstime},#{pname},#{plength},#{purl},#{isnew},#{ptype},#{remark})")
 	@Options(useGeneratedKeys = true, keyColumn = "id", keyProperty = "id")
 	public int insert(Program program);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

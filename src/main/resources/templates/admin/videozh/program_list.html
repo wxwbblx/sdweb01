@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="../../bs3/css/skin_/table.css" />
 <link rel="stylesheet" type="text/css" href="../../bs3/css/jquery.grid.css" />
 <link rel="stylesheet" type="text/css" href="../../bs/css/bootstrap.min.css">
-<title>影视热播列表</title>
+<title>影视专区列表</title>
 </head>
 
 <body>
@@ -98,7 +98,7 @@
                         <i class="card"></i>
                     </span>
                 	<span class="optarea">
-                        <a href="/admin/prog_add_load" class="add">
+                        <a href="/admin/zh/prog_add_load" class="add">
                             <i class="icon"></i>
                             <span class="text">添加</span>
                         </a>                       
@@ -128,9 +128,9 @@
 	                <td th:text="${obj.pdate}">1</td>
 	                 <td th:text="${obj.isnew}">2asdfasdf</td>	              
 	                <td th:text="${obj.remark}">2asdfasdf</td>
-	                <td ><a th:href="@{/admin/prog_update_load(id=${obj.id})}">修改</a></td>
+	                <td ><a th:href="@{/admin/zh/prog_update_load(id=${obj.id})}">修改</a></td>
 	                
-	                <td ><a th:href="@{/admin/prog_del(id=${obj.id})}">删除</a></td>
+	                <td ><a th:href="@{/admin/zh/prog_del(id=${obj.id})}">删除</a></td>
 	                </tr>
 	                </tbody>
 	                </table>

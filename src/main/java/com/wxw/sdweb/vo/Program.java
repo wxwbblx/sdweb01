@@ -1,17 +1,17 @@
 package com.wxw.sdweb.vo;
 
 import java.sql.Date;
-import java.sql.Time;
 
 public class Program {
 
 	private int id;
 	private Date pdate;
-	private Time pstime;
+	private String pstime;
 	private String pname;
 	private int plength;
 	private String purl;
-	private int isnew;
+	private String ptype;
+	private String isnew;
 	private String remark;
 
 	public int getId() {
@@ -30,11 +30,11 @@ public class Program {
 		this.pdate = pdate;
 	}
 
-	public Time getPstime() {
+	public String getPstime() {
 		return pstime;
 	}
 
-	public void setPstime(Time pstime) {
+	public void setPstime(String pstime) {
 		this.pstime = pstime;
 	}
 
@@ -62,11 +62,19 @@ public class Program {
 		this.purl = purl;
 	}
 
-	public int getIsnew() {
+	public String getPtype() {
+		return ptype;
+	}
+
+	public void setPtype(String ptype) {
+		this.ptype = ptype;
+	}
+
+	public String getIsnew() {
 		return isnew;
 	}
 
-	public void setIsnew(int isnew) {
+	public void setIsnew(String isnew) {
 		this.isnew = isnew;
 	}
 
