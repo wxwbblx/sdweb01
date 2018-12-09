@@ -24,6 +24,12 @@ public class MovieServiceImpl implements IMovieService {
 	}
 
 	@Override
+	public Movie findById(int id) {
+		// TODO Auto-generated method stub
+		return movieDao.findById(id);
+	}
+
+	@Override
 	public int delete(int id) {
 		return movieDao.delete(id);
 	}
@@ -36,7 +42,13 @@ public class MovieServiceImpl implements IMovieService {
 	@Override
 	public int update(Movie movie) {
 		// TODO Auto-generated method stub
-		return 0;
+		return movieDao.update(movie);
+	}
+
+	@Override
+	public List<Movie> findByptype(String ptype) {
+		// TODO Auto-generated method stub
+		return movieDao.findByptype(ptype);
 	}
 
 }

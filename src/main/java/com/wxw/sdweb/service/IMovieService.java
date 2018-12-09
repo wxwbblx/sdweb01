@@ -7,6 +7,10 @@ import com.wxw.sdweb.vo.Movie;
 
 public interface IMovieService {
 
+	Movie findById(int id);
+	
+	List<Movie> findByptype(String ptype);
+	
 	List<Movie> findAll();
 	
 	int delete(int id);

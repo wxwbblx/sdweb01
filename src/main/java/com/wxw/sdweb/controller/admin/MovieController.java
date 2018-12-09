@@ -35,7 +35,7 @@ public class MovieController {
 	@Autowired
 	private IMenuService menuService;
 	@Autowired
-	private IVideoinforService  videoinforService;
+	private IVideoinforService videoinforService;
 	/**
 	 * 成员变量
 	 */
@@ -53,7 +53,7 @@ public class MovieController {
 	public ModelAndView loadMovies(Map<String, Object> map) {
 
 		String ptype01 = "" + ptype;
-		List<Movie> objs = movieService.findAll();
+		List<Movie> objs = movieService.findByptype(ptype01);
 		ModelAndView mv = new ModelAndView("/admin/movie/movie_list");
 		map.put("objs", objs);
 		return mv;
@@ -124,9 +124,10 @@ public class MovieController {
 		return mv;
 
 	}
-	
-  //	
-	 /* 节目清单添加页面加载 作者：王宣武
+
+	//
+	/*
+	 * 节目清单添加页面加载 作者：王宣武
 	 * 
 	 */
 	@RequestMapping(value = "/admin/movie/movie_update_load")
@@ -162,33 +163,159 @@ public class MovieController {
 	public ModelAndView loadMovieszh(Map<String, Object> map) {
 
 		String ptype01 = "" + ptypezh;
-		// List<Program> objs = programService.findByType(ptype01);
+		List<Movie> objs = movieService.findByptype(ptype01);
 		ModelAndView mv = new ModelAndView("/admin/moviezh/moviezh_list");
-		// map.put("objs", objs);
+		map.put("objs", objs);
 		return mv;
 
 	}
 	
-	// ===================视频详细信息=================================
 	
+	/**
+	 * 节目清单添加页面加载 作者：王宣武
+	 * 
+	 */
+	@RequestMapping(value = "/admin/moviezh/movie_add_load")
+	@ResponseBody
+	public ModelAndView loadMoviezhAdd(Map<String, Object> map) {
+		Menu obj = menuService.findById(ptypezh);
+		ModelAndView mv = new ModelAndView("/admin/moviezh/movie_addzh");
+		map.put("obj", obj);
+		return mv;
+	}
+	
+	/**
+	 * 功能：节目清单数据提交 作者：王宣武
+	 * 
+	 * @param map
+	 * @return
+	 */
+	@RequestMapping(value = "/admin/moviezh/movie_add", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView MoviezhAdd(Map<String, Object> map, @RequestParam("vname") String vname,
+			@RequestParam("vtype") String vtype, @RequestParam("ptype") String ptype, @RequestParam("vtime") int vtime,
+			@RequestParam("releasetime") String releasetime, @RequestParam("region") String region,
+			@RequestParam("director") String director, @RequestParam("tostar") String tostar,
+			@RequestParam("synopsis") String synopsis, @RequestParam("isnew") int isnew,
+			@RequestParam("ishot") int ishot, @RequestParam("isnominate") int isnominate,
+			@RequestParam("sylloge") int sylloge, @RequestParam("updatetext") int updatetext,
+			@RequestParam("remark") String remark, @RequestParam("file") MultipartFile file,
+			HttpServletRequest request) {
+		String vurl = "www.163.com"; // @RequestParam("vurl") String vurl,
+
+		String furl = MyTools.uploadFile(file, request);
+		Movie movie = new Movie();
+		movie.setVname(vname);
+		movie.setVtype(vtype);
+		movie.setPtype(ptype);
+		movie.setVtime(vtime);
+		movie.setReleasetime(releasetime);
+		movie.setRegion(region);
+		movie.setDirector(director);
+		movie.setTostar(tostar);
+		movie.setSynopsis(synopsis);
+		movie.setPoster(furl);
+		movie.setVurl(vurl);
+		movie.setIshot(ishot);
+		movie.setIsnew(isnew);
+		movie.setIsnominate(isnominate);
+		movie.setSylloge(sylloge);
+		movie.setUpdatetext(updatetext);
+		movie.setRemark(remark);
+
+		// System.out.println(movie);
+		// ============================================
+		int rows = movieService.insert(movie);
+		ModelAndView mv = null;
+		if (rows == 0) {
+			mv = new ModelAndView("/admin/video/program_add");
+		} else {
+			mv = new ModelAndView("redirect:/admin/moviezh/loadmovies");
+		}
+		return mv;
+
+	}
+	
+	// ===================综合专区详细信息=================================
+
+		/**
+		 * 综合专区清单页面加载 作者：王宣武
+		 * 
+		 * @return
+		 */
+		@RequestMapping(value = "/admin/videozh/loadvideo", method = RequestMethod.GET)
+		@ResponseBody
+		public ModelAndView loadVideozh(Map<String, Object> map, @RequestParam("id") int id) {
+
+			Movie movie = movieService.findById(id);
+			map.put("movie", movie);
+			List<Videoinfor> objs = videoinforService.findByVid(id);
+			ModelAndView mv = new ModelAndView("/admin/moviezh/videoinforzh");
+			map.put("objs", objs);
+			return mv;
+
+		}
+	
+	
+	
+
+	// ===================视频详细信息=================================
+
 	/**
 	 * 综合专区清单页面加载 作者：王宣武
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/admin/video/loadvideo", method = RequestMethod.GET )
+	@RequestMapping(value = "/admin/video/loadvideo", method = RequestMethod.GET)
 	@ResponseBody
-	public ModelAndView loadVideo(Map<String, Object> map,@RequestParam("id") int id) {
+	public ModelAndView loadVideo(Map<String, Object> map, @RequestParam("id") int id) {
 
-		
-		 List<Videoinfor> objs = videoinforService.findByVid(id);		 
+		Movie movie = movieService.findById(id);
+		map.put("movie", movie);
+		List<Videoinfor> objs = videoinforService.findByVid(id);
 		ModelAndView mv = new ModelAndView("/admin/movie/videoinfor");
-		 map.put("objs", objs);
+		map.put("objs", objs);
 		return mv;
 
 	}
-	
-	
-	
-	
+
+	/**
+	 * 综合专区清单页面加载 作者：王宣武
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/admin/video/video_add", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView video_Add(Map<String, Object> map, @RequestParam("id") int vid,
+			@RequestParam("vname") String vname, @RequestParam("vlable") String vlable,
+			@RequestParam("vurl") String vurl, @RequestParam("vremark") String vremark, HttpServletRequest request) {
+		// @RequestParam("sname") String sname,
+
+		int rows = 0;
+
+		Videoinfor videoinfor = new Videoinfor();
+		videoinfor.setVid(vid);
+		// videoinfor.setSname("");
+		videoinfor.setVlable(vlable);
+		videoinfor.setVname(vname);
+		videoinfor.setVurl(vurl);
+		videoinfor.setVremark(vremark);
+		rows = videoinforService.insert(videoinfor);
+		// System.out.println("rows="+rows);
+		if (rows > 0) {
+			Movie movie = movieService.findById(vid);
+			int count = movie.getUpdatetext() + 1;
+			// System.out.println("movie.getUpdatetext()="+movie.getUpdatetext());
+			// System.out.println("count="+count);
+			movie.setUpdatetext(count);
+			movieService.update(movie);
+		}
+
+		List<Videoinfor> objs = videoinforService.findByVid(vid);
+		ModelAndView mv = new ModelAndView("redirect:/admin/video/loadvideo?id=" + vid);
+		map.put("objs", objs);
+		return mv;
+
+	}
+
 }

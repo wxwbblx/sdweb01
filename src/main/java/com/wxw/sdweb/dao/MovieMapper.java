@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.wxw.sdweb.vo.Movie;
 
@@ -15,6 +16,14 @@ public interface MovieMapper {
 
 	@Select("select * from  movie ") // order by pstime asc
 	public List<Movie> findAll();
+
+	
+	@Select("select * from  movie where ptype=#{ptype} ") // order by pstime asc
+	public List<Movie> findByptype(String ptype);
+	
+	
+	@Select("select * from  movie where id=#{id}") // order by pstime asc
+	public Movie findById(int id);
 
 	@Select("select * from movie where pdate  = #{pdate}  order by pstime asc")
 	public List<Movie> findBydate(String pdate);
@@ -34,5 +43,10 @@ public interface MovieMapper {
 
 	@Delete("delete from movie where id  = #{id}")
 	public int delete(int id);
+
+	@Update("update movie set vname=#{vname},vtype=#{vtype},ptype=#{ptype},vtime=#{vtime},releasetime=#{releasetime},region=#{region},"
+			+ "director=#{director},tostar=#{tostar},synopsis=#{synopsis},poster=#{poster},vurl=#{vurl},isnew=#{isnew},ishot=#{ishot},"
+			+ "isnominate=#{isnominate},sylloge=#{sylloge},updatetext=#{updatetext},remark=#{remark} where id=#{id}")
+	public int update(Movie movie);
 
 }
