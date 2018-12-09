@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.wxw.sdweb.service.IAdvertService;
+import com.wxw.sdweb.util.MyTools;
 import com.wxw.sdweb.vo.Advert;
 import com.wxw.sdweb.vo.Program;
 
@@ -84,7 +85,7 @@ public class AdvertController {
 			@RequestParam("adpage") String adpage, @RequestParam("adtime") String adtime,
 			@RequestParam("file") MultipartFile file, @RequestParam("isenable") String isenable,
 			@RequestParam("remark") String remark, HttpServletRequest request) {
-		String furl = uploadFile(file, request);
+		String furl =MyTools.uploadFile(file, request);
 
 		// final File excelFile = file.createTempFile(UUIDGenerator.getUUID(), prefix);
 
@@ -173,40 +174,6 @@ public class AdvertController {
 		return mv;
 	}
 
-	private String uploadFile(MultipartFile file, HttpServletRequest request) {
-		String filename = file.getOriginalFilename();
-		String prefix = filename.substring(filename.lastIndexOf("."));
-		int endIndex = request.getRequestURL().length() - request.getRequestURI().length() + 1;
-		String baseURL = request.getRequestURL().substring(0, endIndex);
-
-		String path = ClassUtils.getDefaultClassLoader().getResource("").getPath() + "static/";
-
-		/*
-		 * System.out.println(path);
-		 * System.out.println("getRequestURL: "+request.getRequestURL());
-		 * System.out.println("getRequestURI: "+request.getRequestURI());
-		 * System.out.println("getQueryString: "+request.getQueryString());
-		 * System.out.println("getRemoteAddr: "+request.getRemoteAddr());
-		 * System.out.println("getRemoteHost: "+request.getRemoteHost());
-		 * System.out.println("getRemotePort: "+request.getRemotePort());
-		 * System.out.println("getRemoteUser: "+request.getRemoteUser());
-		 * System.out.println("getLocalAddr: "+request.getLocalAddr());
-		 * System.out.println("getLocalName: "+request.getLocalName());
-		 * System.out.println("getLocalPort: "+request.getLocalPort());
-		 * System.out.println("getMethod: "+request.getMethod());
-		 * System.out.println("-------request.getParamterMap()-------");
-		 */
-
-		String newName = UUID.randomUUID().toString() + prefix;
-		File file01 = new File(path, newName);
-		try {
-			file.transferTo(file01);
-		} catch (IllegalStateException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} // 文件写入
-
-		return baseURL + newName;
-	}
+	
 
 }

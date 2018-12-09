@@ -13,16 +13,30 @@ import com.wxw.sdweb.vo.Movie;
 @ComponentScan({ "com.wxw.sdweb.mapper" })
 @Service(value = "movieService")
 public class MovieServiceImpl implements IMovieService {
-     
-	
+
 	@Autowired
 	private MovieMapper movieDao;
-	
-	
+
 	@Override
 	public List<Movie> findAll() {
-		List<Movie> objs=movieDao.findAll();
+		List<Movie> objs = movieDao.findAll();
 		return objs;
+	}
+
+	@Override
+	public int delete(int id) {
+		return movieDao.delete(id);
+	}
+
+	@Override
+	public int insert(Movie movie) {
+		return movieDao.insert(movie);
+	}
+
+	@Override
+	public int update(Movie movie) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

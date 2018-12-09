@@ -98,7 +98,7 @@
                         <i class="card"></i>
                     </span>
                 	<span class="optarea">
-                        <a href="/admin/prog_add_load" class="add">
+                        <a href="/admin/movie/movie_add_load" class="add">
                             <i class="icon"></i>
                             <span class="text">添加</span>
                         </a>                       
@@ -110,27 +110,42 @@
 	                <thead class="thead-light">
 	                <tr >
 	                <th scope="col">编号</td>
-	                 <th scope="col">名称</td>
+	                <th scope="col">影片名称</td>
+	                <th scope="col">类型</td>
+	                <th scope="col">栏目</td>	                
 	                <th scope="col">长度(分钟)</td>
-	                <th scope="col">时间</td>
-	                <th scope="col">日期</td>
+	                <th scope="col">上映日期</td>
+	                <th scope="col">地区</td>
+	                <th scope="col">导演</td>
+	                <th scope="col">主演</td>
+	                <th scope="col">海报</td>
 	                <th scope="col">是否最新</td>
+	                <th scope="col">是否热播</td>
+	                <th scope="col">是否推荐</td>
+	                
 	                <th scope="col">备注</td>
-	                <th align="center" scope="col" colspan="2">操作</td>	               
+	                <th text-align="center" scope="col" colspan="2">操作</td>	               
 	                </tr>
 	                </thead>
 	                <tbody>
 	                <tr th:each="obj:${objs}">
 	                <td class="ui-table-td" th:text="${obj.id}">111</td>	               
-	                 <td th:text="${obj.pname}">2asdfasdf</td>
-	                <td th:text="${obj.plength}">2asdfasdf</td>	
-	                <td th:text="${obj.pstime}">1</td>
-	                <td th:text="${obj.pdate}">1</td>
-	                 <td th:text="${obj.isnew}">2asdfasdf</td>	              
+	                <td th:text="${obj.vname}">2asdfasdf</td>
+	                <td th:text="${obj.vtype}">2asdfasdf</td>	
+	                <td th:text="${obj.ptype}">1</td>
+	                <td th:text="${obj.vtime}">1</td>
+	                <td th:text="${obj.releasetime}">1</td>
+	                <td th:text="${obj.region}">1</td>	                
+	                <td th:text="${obj.director}">1</td>
+	                <td th:text="${obj.tostar}">1</td>
+	                <td ><img width="80" height="30" th:src="${obj.poster}" alt="二维码" /></td>	                
+	                <td th:switch="${obj.isnew}"><p th:case="'1'">是</p><p th:case="'0'">否</p></td>
+	                <td th:switch="${obj.ishot}"><p th:case="'1'">是</p><p th:case="'0'">否</p></td>
+	                <td th:switch="${obj.isnominate}"><p th:case="'1'">是</p><p th:case="'0'">否</p></td>	                             
 	                <td th:text="${obj.remark}">2asdfasdf</td>
-	                <td ><a th:href="@{/admin/prog_update(id=${obj.id})}">修改</a></td>
-	                
-	                <td ><a th:href="@{/admin/prog_del(id=${obj.id})}">删除</a></td>
+	                <td ><a th:href="@{/admin/video/loadvideo(id=${obj.id})}">添加剧集</a></td>	                
+	                <td ><a th:href="@{/admin/movie/movie_update_load(id=${obj.id})}">修改</a>&nbsp;&nbsp;
+	                <a th:href="@{/admin/movie/movie_del(id=${obj.id})}">删除</a></td>
 	                </tr>
 	                </tbody>
 	                </table>

@@ -4,6 +4,7 @@ public class Movie {
 	private int id;
 	private String vname;
 	private String vtype;
+	private String ptype;
 	private int vtime;
 	private String releasetime;
 	private String region;
@@ -35,6 +36,12 @@ public class Movie {
 	}
 	public void setVtype(String vtype) {
 		this.vtype = vtype;
+	}
+	public String getPtype() {
+		return ptype;
+	}
+	public void setPtype(String ptype) {
+		this.ptype = ptype;
 	}
 	public int getVtime() {
 		return vtime;
