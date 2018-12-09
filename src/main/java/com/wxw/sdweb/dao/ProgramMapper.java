@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -16,6 +17,9 @@ public interface ProgramMapper {
 
 	@Select("select * from  program order by pstime asc")
 	public List<Program> findAll();
+	
+	@Select("select * from program where ptype=#{ptype} and isnew  = #{isnew}  order by pstime asc")
+	public List<Program> findByNew(@Param("ptype")String ptype,@Param("isnew") int isnew);
 
 	@Select("select * from program where pdate  = #{pdate}  order by pstime asc")
 	public List<Program> findBydate(String pdate);

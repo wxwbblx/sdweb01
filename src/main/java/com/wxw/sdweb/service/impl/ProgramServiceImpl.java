@@ -62,4 +62,10 @@ public class ProgramServiceImpl implements IProgramService {
 		return objs;
 	}
 
+	@Override
+	public List<Program> findByNew(String ptype, int isnew) {
+		System.out.println("ProgramServiceImpl ptype="+ptype);
+		return programDao.findByNew(ptype, isnew);
+	}
+
 }

@@ -51,4 +51,22 @@ public class MovieServiceImpl implements IMovieService {
 		return movieDao.findByptype(ptype);
 	}
 
+	@Override
+	public List<Movie> findBynewptype(String ptype, int isnew) {
+		// TODO Auto-generated method stub
+		return movieDao.findBynewptype(ptype, isnew);
+	}
+
+	@Override
+	public List<Movie> findByhotptype(String ptype, int ishot) {
+		// TODO Auto-generated method stub
+		return movieDao.findByhotptype(ptype, ishot);
+	}
+
+	@Override
+	public List<Movie> findBynominateptype(String ptype, int isnominate) {
+		// TODO Auto-generated method stub
+		return movieDao.findBynominateptype(ptype, isnominate);
+	}
+
 }

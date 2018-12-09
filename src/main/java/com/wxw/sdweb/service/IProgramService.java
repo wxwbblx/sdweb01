@@ -6,6 +6,10 @@ import com.wxw.sdweb.vo.Program;
 
 public interface IProgramService {
 	List<Program> findAll();
+	
+	
+	List<Program> findByNew(String ptype,int isnew);
+	
 
 	List<Program> findByType(String ptype);
 

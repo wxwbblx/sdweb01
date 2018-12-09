@@ -21,8 +21,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.wxw.sdweb.service.IAdvertService;
+import com.wxw.sdweb.service.IMenuService;
 import com.wxw.sdweb.util.MyTools;
 import com.wxw.sdweb.vo.Advert;
+import com.wxw.sdweb.vo.Menu;
 import com.wxw.sdweb.vo.Program;
 
 import java.util.UUID;
@@ -40,6 +42,9 @@ public class AdvertController {
 
 	@Autowired
 	private IAdvertService advertService;
+	
+	@Autowired
+	private IMenuService menuService;
 
 	/***********************************************
 	 * 功能：广告API 作者：王宣武 日期：2018-01-01
@@ -69,8 +74,11 @@ public class AdvertController {
 	@RequestMapping(value = "/admin/ad/load_add")
 	@ResponseBody
 	public ModelAndView loadAdvertAdd(Map<String, Object> map) {
+		
+		List<Menu> objs=menuService.findAll();
 		ModelAndView mv = new ModelAndView("/admin/advert/advert_add");
 		map.put("title", "广告添加");
+		map.put("objs", objs);
 		return mv;
 	}
 

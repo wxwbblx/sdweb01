@@ -126,10 +126,9 @@
 	                <td th:text="${obj.plength}">2asdfasdf</td>	
 	                <td th:text="${obj.pstime}">1</td>
 	                <td th:text="${obj.pdate}">1</td>
-	                 <td th:text="${obj.isnew}">2asdfasdf</td>	              
+	                <td th:switch="${obj.isnew}"><p th:case="'1'">是</p><p th:case="'0'">否</p></td>              
 	                <td th:text="${obj.remark}">2asdfasdf</td>
-	                <td ><a th:href="@{/admin/zh/prog_update_load(id=${obj.id})}">修改</a></td>
-	                
+	                <td ><a th:href="@{/admin/zh/prog_update_load(id=${obj.id})}">修改</a></td>	                
 	                <td ><a th:href="@{/admin/zh/prog_del(id=${obj.id})}">删除</a></td>
 	                </tr>
 	                </tbody>

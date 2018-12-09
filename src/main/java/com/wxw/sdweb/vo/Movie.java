@@ -1,5 +1,7 @@
 package com.wxw.sdweb.vo;
 
+import java.util.List;
+
 public class Movie {
 	private int id;
 	private String vname;
@@ -19,6 +21,7 @@ public class Movie {
 	private int sylloge;
 	private int updatetext;
 	private String remark;
+	private List<Videoinfor> videoinfor;
 	public int getId() {
 		return id;
 	}
@@ -126,6 +129,12 @@ public class Movie {
 	}
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+	public List<Videoinfor> getVideoinfor() {
+		return videoinfor;
+	}
+	public void setVideoinfor(List<Videoinfor> videoinfor) {
+		this.videoinfor = videoinfor;
 	}
 	
 	

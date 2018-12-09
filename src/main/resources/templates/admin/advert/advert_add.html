@@ -74,10 +74,7 @@ window.UMEDITOR_HOME_URL = 'umeditor/';  // 请换成绝对路径
 	                	<label>所在位置</label>
 	                	<div class="kv-item-content">
 	                    	<select name="adpage">
-	                        	<option>影视热播</option>
-									<option>综合精选</option>
-									<option>影视专区</option>
-									<option>综合专区</option>
+	                    	<option th:each="obj:${objs}" th:value="${obj.id}" th:text="${obj.mname}"></option>
 	                        </select>
 	                    </div>
 	                    <span class="kv-item-tip success">成功信息</span>

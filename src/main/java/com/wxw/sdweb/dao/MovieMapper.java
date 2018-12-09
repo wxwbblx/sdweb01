@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -17,13 +18,20 @@ public interface MovieMapper {
 	@Select("select * from  movie ") // order by pstime asc
 	public List<Movie> findAll();
 
-	
 	@Select("select * from  movie where ptype=#{ptype} ") // order by pstime asc
 	public List<Movie> findByptype(String ptype);
-	
-	
+
+	@Select("select * from  movie where ptype=#{ptype} and isnew=#{isnew}") // order by pstime asc
+	List<Movie> findBynewptype(@Param("ptype") String ptype, @Param("isnew") int isnew);
+
+	@Select("select * from  movie where ptype=#{ptype} and ishot=#{ishot}") // order by pstime asc
+	List<Movie> findByhotptype(@Param("ptype") String ptype, @Param("ishot") int ishot);
+
+	@Select("select * from  movie where ptype=#{ptype} and isnominate=#{isnominate}") // order by pstime asc
+	List<Movie> findBynominateptype(@Param("ptype") String ptype, @Param("isnominate") int isnominate);
+
 	@Select("select * from  movie where id=#{id}") // order by pstime asc
-	public Movie findById(int id);
+	public Movie findById(@Param("id") int id);
 
 	@Select("select * from movie where pdate  = #{pdate}  order by pstime asc")
 	public List<Movie> findBydate(String pdate);

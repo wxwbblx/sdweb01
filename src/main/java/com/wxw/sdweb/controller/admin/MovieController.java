@@ -256,7 +256,44 @@ public class MovieController {
 
 		}
 	
-	
+		 /* 综合专区清单页面加载 作者：王宣武
+		 * 
+		 * @return
+		 */
+		@RequestMapping(value = "/admin/videozh/video_add", method = RequestMethod.POST)
+		@ResponseBody
+		public ModelAndView videozh_Add(Map<String, Object> map, @RequestParam("id") int vid,
+				@RequestParam("vname") String vname, @RequestParam("vlable") String vlable,
+				@RequestParam("vurl") String vurl, @RequestParam("vremark") String vremark, HttpServletRequest request) {
+			// @RequestParam("sname") String sname,
+
+			int rows = 0;
+
+			Videoinfor videoinfor = new Videoinfor();
+			videoinfor.setVid(vid);
+			// videoinfor.setSname("");
+			videoinfor.setVlable(vlable);
+			videoinfor.setVname(vname);
+			videoinfor.setVurl(vurl);
+			videoinfor.setVremark(vremark);
+			rows = videoinforService.insert(videoinfor);
+			// System.out.println("rows="+rows);
+			if (rows > 0) {
+				Movie movie = movieService.findById(vid);
+				int count = movie.getUpdatetext() + 1;
+				// System.out.println("movie.getUpdatetext()="+movie.getUpdatetext());
+				// System.out.println("count="+count);
+				movie.setUpdatetext(count);
+				movieService.update(movie);
+			}
+
+			List<Videoinfor> objs = videoinforService.findByVid(vid);
+			ModelAndView mv = new ModelAndView("redirect:/admin/videozh/loadvideo?id=" + vid);
+			map.put("objs", objs);
+			return mv;
+
+		}
+
 	
 
 	// ===================视频详细信息=================================
