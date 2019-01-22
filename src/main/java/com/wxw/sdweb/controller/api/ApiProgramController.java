@@ -58,32 +58,48 @@ public class ApiProgramController {
 		}
 	}
 
+	
+	
+	// ===================影视热播=================================	
+	/**
+	 * 获取全部影视列表
+	 * 王宣武 
+	 * 2019-01-22
+	 * @return
+	 */
 	@SuppressWarnings({ "rawtypes", "unused" })
 	@RequestMapping(value = "/api/v1/movie/getall", method = RequestMethod.GET)
 	public Result getCurrList() {
 		String ptype = "3";
 		List<Movie> objs = movieService.findByptype(ptype);
-		for (int i = 0; i < objs.size(); i++) {
+		
+		/*for (int i = 0; i < objs.size(); i++) {
 			List<Videoinfor> subobjs = videoinforService.findByVid(objs.get(i).getId());
 			objs.get(i).setVideoinfor(subobjs);
-		}
+		}*/
 		if (null != objs) {
 			return ResultUtils.success(objs);
 		} else {
 			return ResultUtils.warn(ResultCode.PARAMETER_ERROR);
 		}
 	}
-
+	
+	
+	
+	
+	
+	
+	
 	@SuppressWarnings({ "rawtypes", "unused" })
 	@RequestMapping(value = "/api/v1/movie/getnew", method = RequestMethod.GET)
 	public Result getCurrNewList() {
 		String ptype = "3";
 		int isnew = 1;
 		List<Movie> objs = movieService.findBynewptype(ptype, isnew);
-		for (int i = 0; i < objs.size(); i++) {
+		/*for (int i = 0; i < objs.size(); i++) {
 			List<Videoinfor> subobjs = videoinforService.findByVid(objs.get(i).getId());
 			objs.get(i).setVideoinfor(subobjs);
-		}
+		}*/
 		if (null != objs) {
 			return ResultUtils.success(objs);
 		} else {
@@ -97,10 +113,10 @@ public class ApiProgramController {
 		String ptype = "3";
 		int ishot = 1;
 		List<Movie> objs = movieService.findByhotptype(ptype, ishot);
-		for (int i = 0; i < objs.size(); i++) {
+		/*for (int i = 0; i < objs.size(); i++) {
 			List<Videoinfor> subobjs = videoinforService.findByVid(objs.get(i).getId());
 			objs.get(i).setVideoinfor(subobjs);
-		}
+		}*/
 		if (null != objs) {
 			return ResultUtils.success(objs);
 		} else {
@@ -114,10 +130,10 @@ public class ApiProgramController {
 		String ptype = "3";
 		int isnominate = 1;
 		List<Movie> objs = movieService.findBynominateptype(ptype, isnominate);
-		for (int i = 0; i < objs.size(); i++) {
+		/*for (int i = 0; i < objs.size(); i++) {
 			List<Videoinfor> subobjs = videoinforService.findByVid(objs.get(i).getId());
 			objs.get(i).setVideoinfor(subobjs);
-		}
+		}*/
 		if (null != objs) {
 			return ResultUtils.success(objs);
 		} else {
@@ -130,10 +146,10 @@ public class ApiProgramController {
 	public Result getCurrzhList() {
 		String ptype = "4";
 		List<Movie> objs = movieService.findByptype(ptype);
-		for (int i = 0; i < objs.size(); i++) {
+		/*for (int i = 0; i < objs.size(); i++) {
 			List<Videoinfor> subobjs = videoinforService.findByVid(objs.get(i).getId());
 			objs.get(i).setVideoinfor(subobjs);
-		}
+		}*/
 		if (null != objs) {
 			return ResultUtils.success(objs);
 		} else {
@@ -147,10 +163,10 @@ public class ApiProgramController {
 		String ptype = "4";
 		int isnew = 1;
 		List<Movie> objs = movieService.findBynewptype(ptype, isnew);
-		for (int i = 0; i < objs.size(); i++) {
+		/*for (int i = 0; i < objs.size(); i++) {
 			List<Videoinfor> subobjs = videoinforService.findByVid(objs.get(i).getId());
 			objs.get(i).setVideoinfor(subobjs);
-		}
+		}*/
 		if (null != objs) {
 			return ResultUtils.success(objs);
 		} else {
@@ -164,10 +180,10 @@ public class ApiProgramController {
 		String ptype = "4";
 		int ishot = 1;
 		List<Movie> objs = movieService.findByhotptype(ptype, ishot);
-		for (int i = 0; i < objs.size(); i++) {
+		/*for (int i = 0; i < objs.size(); i++) {
 			List<Videoinfor> subobjs = videoinforService.findByVid(objs.get(i).getId());
 			objs.get(i).setVideoinfor(subobjs);
-		}
+		}*/
 		if (null != objs) {
 			return ResultUtils.success(objs);
 		} else {
@@ -181,10 +197,10 @@ public class ApiProgramController {
 		String ptype = "4";
 		int isnominate = 1;
 		List<Movie> objs = movieService.findBynominateptype(ptype, isnominate);
-		for (int i = 0; i < objs.size(); i++) {
+		/*for (int i = 0; i < objs.size(); i++) {
 			List<Videoinfor> subobjs = videoinforService.findByVid(objs.get(i).getId());
 			objs.get(i).setVideoinfor(subobjs);
-		}
+		}*/
 		if (null != objs) {
 			return ResultUtils.success(objs);
 		} else {
