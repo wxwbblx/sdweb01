@@ -38,84 +38,214 @@ window.UMEDITOR_HOME_URL = 'umeditor/';  // 请换成绝对路径
 	            </h2>            
 	            <div class="subfild-content base-info">
 	            
-	            	<div class="kv-item ue-clear">
-	                	<input type="hidden" placeholder="节目编号" name="id" maxlength="30" th:value="${movie.id}"/>
-	                	<label><span class="impInfo">*</span>影片名称:</label>
-	                	<div class="kv-item-content" >
-	                	<h6><label th:text="${movie.vname}">影片名称:</label></h6>	                    
-	                    </div>
-	                </div>
-	                
-	                <div class="kv-item ue-clear time">
-	                	<label><span class="impInfo">*</span>影片类型:</label>
-	                	<div class="kv-item-content">
-	                    	<h6><label th:text="${movie.vtype}">影片名称:</label></h6>	                        
-	                    </div>
-	                </div>
-	                <div class="kv-item ue-clear">
-	                	<label>所在栏目</label>
-	                	<div class="kv-item-content">
-	                    	<h6><label th:text="${movie.ptype}">影片名称:</label></h6>
-	                    </div>	                    
-	                </div>
-	                
-	                <div class="kv-item ue-clear time">
-	                	<label><span class="impInfo">*</span>视频时长:</label>
-	                	<div class="kv-item-content">
-	                	<h6><label th:text="${movie.vtime}">影片名称:</label>分钟</h6>                    	
-	                    </div>	                    
-	                </div>
-	                
-	                <div class="kv-item ue-clear time">
-	                	<label><span class="impInfo">*</span>上映日期:</label>
-	                	<div class="kv-item-content">	                    	
-	                    	<h6><label th:text="${movie.releasetime}">影片名称:</label></h6> 
-	                    </div>	                    
-	                </div>
-	                
-	                <div class="kv-item ue-clear">
-	                	<label>地区</label>
-	                	<div class="kv-item-content">
-	                    	<h6><label th:text="${movie.region}">影片名称:</label></h6> 	                    	
-	                    </div>	                    
-	                </div>
-	                
-	                
-	                <div class="kv-item ue-clear">
-	                	<label><span class="impInfo">*</span>导演:</label>
-	                	<div class="kv-item-content">
-	                    	<h6><label th:text="${movie.director}">影片名称:</label></h6>
-	                    </div>	                   
-	                </div>
-	                <div class="kv-item ue-clear">
-	                	<label><span class="impInfo">*</span>主演:</label>
-	                	<div class="kv-item-content">
-	                	<h6><label th:text="${movie.tostar}">影片名称:</label></h6>	                    	
-	                    </div>
-	                </div>
-	                <div class="kv-item ue-clear">
-	                	<label><span class="impInfo">*</span>总集数:</label>
-	                	<div class="kv-item-content">
-	                    	<h6><label th:text="${movie.sylloge}">影片名称:</label></h6> 
-	                    </div>
-	                </div>
-	                <div class="kv-item ue-clear">
-	                	<label><span class="impInfo">*</span>更新数:</label>
-	                	<div class="kv-item-content">
-	                    	<h6><label th:text="${movie.updatetext}">影片名称:</label></h6> 	                    	
-	                    </div>
-	                </div>
-	                <h2 class="subfild">
-	            	<span>影片简介</span>
-	            </h2>            
-	            <div class="subfild-content remarkes-info">
-	            	<div class="kv-item ue-clear">
-	                	<label><span class="impInfo">*</span>简介内容</label>
-	                	<div class="kv-item-content">
-	                    	<h6><label th:text="${movie.synopsis}">影片名称:</label></h6>	                    	
-	                    </div>
-	                </div>
-	            </div>
+	            	<table style="margin-top:-20px;table-layout:fixed;"  class="table table-striped"  width="100%">
+              <tr>
+                <td width="40%">
+                  <div class="kv-item ue-clear">
+                    <input type="hidden" placeholder="节目编号" name="id" maxlength="30" th:value="${movie.id}"/>
+                    <label>
+                      <span class="impInfo">
+                        *
+                      </span>
+                      影片名称:
+                    </label>
+                    <div class="kv-item-content" >
+                      <h6>
+                        <label th:text="${movie.vname}">
+                          影片名称:
+                        </label>
+                      </h6>
+                    </div>
+                  </div>
+                </td>
+                <td width="40%">
+                  <div class="kv-item ue-clear time">
+                    <label>
+                      <span class="impInfo">
+                        *
+                      </span>
+                      影片类型:
+                    </label>
+                    <div class="kv-item-content">
+                      <h6>
+                        <label th:text="${movie.vtype}">
+                          影片名称:
+                        </label>
+                      </h6>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td width="40%">
+                  <div class="kv-item ue-clear">
+                    <label>
+                      所在栏目
+                    </label>
+                    <div class="kv-item-content">
+                      <h6>
+                        <label th:text="${movie.ptype}">
+                          影片名称:
+                        </label>
+                      </h6>
+                    </div>
+                  </div>
+                </td>
+                <td width="40%">
+                  <div class="kv-item ue-clear time">
+                    <label>
+                      <span class="impInfo">
+                        *
+                      </span>
+                      视频时长:
+                    </label>
+                    <div class="kv-item-content">
+                      <h6>
+                        <label th:text="${movie.vtime}">
+                          影片名称:
+                        </label>
+                        分钟
+                      </h6>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td width="40%">
+                  <div class="kv-item ue-clear time">
+		              <label>
+		                <span class="impInfo">
+		                  *
+		                </span>
+		                上映日期:
+		              </label>
+		              <div class="kv-item-content">
+		                <h6>
+		                  <label th:text="${movie.releasetime}">
+		                    影片名称:
+		                  </label>
+		                </h6>
+		              </div>
+		            </div>
+                </td>
+                <td width="40%">
+                   <div class="kv-item ue-clear">
+		              <label>
+		                地区:
+		              </label>
+		              <div class="kv-item-content">
+		                <h6>
+		                  <label th:text="${movie.region}">
+		                    影片名称:
+		                  </label>
+		                </h6>
+		              </div>
+		            </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td width="40%">
+                  <div class="kv-item ue-clear">
+		              <label>
+		                <span class="impInfo">
+		                  *
+		                </span>
+		                导演:
+		              </label>
+		              <div class="kv-item-content">
+		                <h6>
+		                  <label th:text="${movie.director}">
+		                    影片名称:
+		                  </label>
+		                </h6>
+		              </div>
+		            </div>
+                </td>
+                <td width="40%">
+		                  <div class="kv-item ue-clear">
+		              <label>
+		                <span class="impInfo">
+		                  *
+		                </span>
+		                主演:
+		              </label>
+		              <div class="kv-item-content">
+		                <h6>
+		                  <label th:text="${movie.tostar}">
+		                    影片名称:
+		                  </label>
+		                </h6>
+		              </div>
+		            </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td width="40%">
+		                   <div class="kv-item ue-clear">
+		              <label>
+		                <span class="impInfo">
+		                  *
+		                </span>
+		                总集数:
+		              </label>
+		              <div class="kv-item-content">
+		                <h6>
+		                  <label  th:text="${movie.sylloge}">
+		                    影片名称:
+		                  </label>
+		                </h6>
+		              </div>
+		            </div>
+                </td>
+                <td width="40%">
+		                 <div class="kv-item ue-clear">
+              <label>
+                <span class="impInfo">
+                  *
+                </span>
+                更新数:
+              </label>
+              <div class="kv-item-content">
+                <h6>
+                  <label th:text="${movie.updatetext}">
+                    影片名称:
+                  </label>
+                </h6>
+              </div>
+            </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" >
+		                  <h2 class="subfild">
+              <span>
+                影片简介
+              </span>
+            </h2>
+            <div class="subfild-content remarkes-info">
+              <div class="kv-item ue-clear">
+                <label>
+                  <span class="impInfo">
+                    *
+                  </span>
+                  简介内容
+                </label>
+                <div class="kv-item-content">
+                  <h6>
+                    <p style="width:100%;" th:text="${movie.synopsis}">
+                      影片名称:
+                    </p>
+                  </h6>
+                </div>
+              </div>
+            </div>
+                </td>
+              </tr>
+            </table>
 	            <h2 class="subfild">
 	            	<span>剧集列表</span>
 	            </h2> 

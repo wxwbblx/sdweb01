@@ -1,221 +1,362 @@
 <!doctype html>
 <html lang="en">
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta name="Generator" content="EditPlus®">
   <meta name="Author" content="">
   <meta name="Keywords" content="">
   <meta name="Description" content="">
   <link rel="stylesheet" type="text/css" href="../../bs3/css/style.css" />
-<link rel="stylesheet" type="text/css" href="../../bs3/css/WdatePicker.css" />
-<link rel="stylesheet" type="text/css" href="../../bs3/css/skin_/form.css" />
-<link href="umeditor/themes/default/_css/umeditor.css" type="text/css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../../bs3/css/WdatePicker.css" />
+  <link rel="stylesheet" type="text/css" href="../../bs3/css/skin_/form.css" />
+  <link href="umeditor/themes/default/_css/umeditor.css" type="text/css" rel="stylesheet">
 
-<link rel="stylesheet" type="text/css" href="../../bs3/css/jquery.grid.css" />
-<link rel="stylesheet" type="text/css" href="../../bs/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../../bs3/css/jquery.grid.css" />
+  <link rel="stylesheet" type="text/css" href="../../bs/css/bootstrap.min.css">
 
-<script type="text/javascript" src="../../bs3/js/jquery.js"></script>
-<script type="text/javascript" src="../../bs3/js/global.js"></script>
-<script type="text/javascript" src="../../bs3/js/jquery.select.js"></script>
-<script type="text/javascript" src="../../bs3/js/WdatePicker.js"></script>
-<script type="text/javascript">
-window.UMEDITOR_HOME_URL = 'umeditor/';  // 请换成绝对路径
-</script>
-<script type="text/javascript" src="../../bs3/js/umeditor.config.js"></script>
-<script type="text/javascript" src="../../bs3/js/editor_api.js"></script>
-<script type="text/javascript" src="../../bs3/umeditor/lang/zh-cn/zh-cn.js"></script>
-<title>视频列表</title>
+  <script type="text/javascript" src="../../bs3/js/jquery.js">
+  </script>
+  <script type="text/javascript" src="../../bs3/js/global.js">
+  </script>
+  <script type="text/javascript" src="../../bs3/js/jquery.select.js">
+  </script>
+  <script type="text/javascript" src="../../bs3/js/WdatePicker.js">
+  </script>
+  <script type="text/javascript">
+    window.UMEDITOR_HOME_URL = 'umeditor/';  // 请换成绝对路径
+  </script>
+  <script type="text/javascript" src="../../bs3/js/umeditor.config.js">
+  </script>
+  <script type="text/javascript" src="../../bs3/js/editor_api.js">
+  </script>
+  <script type="text/javascript" src="../../bs3/umeditor/lang/zh-cn/zh-cn.js">
+  </script>
+  <title>
+    视频列表
+  </title>
 </head>
 
 <body>
-<div id="container">
-	<div id="hd">
+  <div id="container">
+    <div id="hd">
     </div>
     <div id="bd">
-   		 <form class="form-signin" role="form" action="/admin/video/video_add" enctype="multipart/form-data" method="post">
-	    	<div id="main">
-	            <h2 class="subfild">
-	            	<span>视频信息</span>
-	            </h2>            
-	            <div class="subfild-content base-info">
-	            
-	            	<div class="kv-item ue-clear">
-	                	<input type="hidden" placeholder="节目编号" name="id" maxlength="30" th:value="${movie.id}"/>
-	                	<label><span class="impInfo">*</span>影片名称:</label>
-	                	<div class="kv-item-content" >
-	                	<h6><label th:text="${movie.vname}">影片名称:</label></h6>	                    
-	                    </div>
-	                </div>
-	                
-	                <div class="kv-item ue-clear time">
-	                	<label><span class="impInfo">*</span>影片类型:</label>
-	                	<div class="kv-item-content">
-	                    	<h6><label th:text="${movie.vtype}">影片名称:</label></h6>	                        
-	                    </div>
-	                </div>
-	                <div class="kv-item ue-clear">
-	                	<label>所在栏目</label>
-	                	<div class="kv-item-content">
-	                    	<h6><label th:text="${movie.ptype}">影片名称:</label></h6>
-	                    </div>	                    
-	                </div>
-	                
-	                <div class="kv-item ue-clear time">
-	                	<label><span class="impInfo">*</span>视频时长:</label>
-	                	<div class="kv-item-content">
-	                	<h6><label th:text="${movie.vtime}">影片名称:</label>分钟</h6>                    	
-	                    </div>	                    
-	                </div>
-	                
-	                <div class="kv-item ue-clear time">
-	                	<label><span class="impInfo">*</span>上映日期:</label>
-	                	<div class="kv-item-content">	                    	
-	                    	<h6><label th:text="${movie.releasetime}">影片名称:</label></h6> 
-	                    </div>	                    
-	                </div>
-	                
-	                <div class="kv-item ue-clear">
-	                	<label>地区</label>
-	                	<div class="kv-item-content">
-	                    	<h6><label th:text="${movie.region}">影片名称:</label></h6> 	                    	
-	                    </div>	                    
-	                </div>
-	                
-	                
-	                <div class="kv-item ue-clear">
-	                	<label><span class="impInfo">*</span>导演:</label>
-	                	<div class="kv-item-content">
-	                    	<h6><label th:text="${movie.director}">影片名称:</label></h6>
-	                    </div>	                   
-	                </div>
-	                <div class="kv-item ue-clear">
-	                	<label><span class="impInfo">*</span>主演:</label>
-	                	<div class="kv-item-content">
-	                	<h6><label th:text="${movie.tostar}">影片名称:</label></h6>	                    	
-	                    </div>
-	                </div>
-	                <div class="kv-item ue-clear">
-	                	<label><span class="impInfo">*</span>总集数:</label>
-	                	<div class="kv-item-content">
-	                    	<h6><label th:text="${movie.sylloge}">影片名称:</label></h6> 
-	                    </div>
-	                </div>
-	                <div class="kv-item ue-clear">
-	                	<label><span class="impInfo">*</span>更新数:</label>
-	                	<div class="kv-item-content">
-	                    	<h6><label th:text="${movie.updatetext}">影片名称:</label></h6> 	                    	
-	                    </div>
-	                </div>
-	                <h2 class="subfild">
-	            	<span>影片简介</span>
-	            </h2>            
-	            <div class="subfild-content remarkes-info">
-	            	<div class="kv-item ue-clear">
-	                	<label><span class="impInfo">*</span>简介内容</label>
-	                	<div class="kv-item-content">
-	                    	<h6><label th:text="${movie.synopsis}">影片名称:</label></h6>	                    	
-	                    </div>
-	                </div>
-	            </div>
-	            <h2 class="subfild">
-	            	<span>剧集列表</span>
-	            </h2> 
-	                <div class="kv-item ue-clear">
-	                	<label>第n集</label>
-	                	<div class="kv-item-content">
-	                    	<input type="text" placeholder="节目标题" name="vname" maxlength="30"/>	                    	
-	                    </div>	                    
-	                </div>
-	               <div class="kv-item ue-clear">
-	                	<label>简介</label>
-	                	<div class="kv-item-content">
-	                    	<input type="text" placeholder="简介" name="vlable" maxlength="30"/>	                    	
-	                    </div>	                    
-	                </div>
-	                 <div class="kv-item ue-clear">
-	                	<label>播放地址</label>
-	                	<div class="kv-item-content">
-	                    	<input type="text" placeholder="简介" name="vurl" />	                    	
-	                    </div>	                    
-	                </div> 
-	            <div class="subfild-content remarkes-info">
-	            	<div class="kv-item ue-clear">
-	                	<label><span class="impInfo">*</span>备注内容</label>
-	                	<div class="kv-item-content">
-	                    	<textarea placeholder="备注内容" id="remark" name="vremark" style="width:600px;height:50px;"></textarea>
-	                    </div>
-	                </div>
-	            </div>
-	            
-	            <div class="buttons">
-	                <input class="button" type="submit" value="提交" /> 
-	                <a class="button btn btn-primary" href="/admin/movie/loadmovies;" >返回</a>
-	            </div>
-	        </div>
+      <form class="form-signin" role="form" action="/admin/video/video_add" enctype="multipart/form-data" method="post">
+        <div id="main">
+          <h2 class="subfild">
+            <span>
+              视频信息
+            </span>
+          </h2>
+          <div class="subfild-content base-info">
+
+            <table style="margin-top:-20px;table-layout:fixed;"  class="table table-striped"  width="100%">
+              <tr>
+                <td width="40%">
+                  <div class="kv-item ue-clear">
+                    <input type="hidden" placeholder="节目编号" name="id" maxlength="30" th:value="${movie.id}"/>
+                    <label>                      
+                      影片名称:
+                    </label>
+                    <div class="kv-item-content" >
+                      <h6>
+                        <p th:text="${movie.vname}">
+                          影片名称:
+                        </p>
+                      </h6>
+                    </div>
+                  </div>
+                </td>
+                <td width="40%">
+                  <div class="kv-item ue-clear time">
+                    <label>                     
+                      影片类型:
+                    </label>
+                    <div class="kv-item-content">
+                      <h6>
+                        <p th:text="${movie.vtype}">
+                          影片名称:
+                        </p>
+                      </h6>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td width="40%">
+                  <div class="kv-item ue-clear">
+                    <label>
+                      所在栏目
+                    </label>
+                    <div class="kv-item-content">
+                      <h6>
+                        <label th:text="${movie.ptype}">
+                          影片名称:
+                        </label>
+                      </h6>
+                    </div>
+                  </div>
+                </td>
+                <td width="40%">
+                  <div class="kv-item ue-clear time">
+                    <label>
+                      <span class="impInfo">
+                        *
+                      </span>
+                      视频时长:
+                    </label>
+                    <div class="kv-item-content">
+                      <h6>
+                        <label th:text="${movie.vtime}">
+                          影片名称:
+                        </label>
+                        分钟
+                      </h6>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td width="40%">
+                  <div class="kv-item ue-clear time">
+		              <label>
+		                <span class="impInfo">
+		                  *
+		                </span>
+		                上映日期:
+		              </label>
+		              <div class="kv-item-content">
+		                <h6>
+		                  <label th:text="${movie.releasetime}">
+		                    影片名称:
+		                  </label>
+		                </h6>
+		              </div>
+		            </div>
+                </td>
+                <td width="40%">
+                   <div class="kv-item ue-clear">
+		              <label>
+		                地区:
+		              </label>
+		              <div class="kv-item-content">
+		                <h6>
+		                  <label th:text="${movie.region}">
+		                    影片名称:
+		                  </label>
+		                </h6>
+		              </div>
+		            </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td width="40%">
+                  <div class="kv-item ue-clear">
+		              <label>		                
+		                导演:
+		              </label>
+		              <div class="kv-item-content">
+		                <h6>
+		                  <p th:text="${movie.director}">
+		                    影片名称:
+		                  </p>
+		                </h6>
+		              </div>
+		            </div>
+                </td>
+                <td width="40%">
+		                  <div class="kv-item ue-clear">
+		              <label>		               
+		                主演:
+		              </label>
+		              <div class="kv-item-content">
+		                <h6>
+		                  <p th:text="${movie.tostar}">
+		                    影片名称:
+		                  </p>
+		                </h6>
+		              </div>
+		            </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td width="40%">
+		                   <div class="kv-item ue-clear">
+		              <label>
+		                <span class="impInfo">
+		                  *
+		                </span>
+		                总集数:
+		              </label>
+		              <div class="kv-item-content">
+		                <h6>
+		                  <label  th:text="${movie.sylloge}">
+		                    影片名称:
+		                  </label>
+		                </h6>
+		              </div>
+		            </div>
+                </td>
+                <td width="40%">
+		                 <div class="kv-item ue-clear">
+              <label>
+                <span class="impInfo">
+                  *
+                </span>
+                更新数:
+              </label>
+              <div class="kv-item-content">
+                <h6>
+                  <label th:text="${movie.updatetext}">
+                    影片名称:
+                  </label>
+                </h6>
+              </div>
+            </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" >
+		                  <h2 class="subfild">
+              <span>
+                影片简介
+              </span>
+            </h2>
+            <div class="subfild-content remarkes-info">                            
+                <div class="kv-item-content">
+                  <h6>
+                    <p style="width:100%;" th:text="${movie.synopsis}">
+                      影片名称:
+                    </p>
+                  </h6>
+                </div>             
+            </div>
+                </td>
+              </tr>
+            </table>
+
+            <h2 class="subfild">
+              <span>
+                剧集列表
+              </span>
+            </h2>
+            <div class="kv-item ue-clear">
+              <label>
+              <span class="impInfo">
+                    *
+                  </span>
+                第n集
+              </label>
+              <div class="kv-item-content">
+                <input type="text" placeholder="节目标题" name="vname" maxlength="30"/>
+              </div>
+            </div>
+            <div class="kv-item ue-clear">
+              <label>
+                简介
+              </label>
+              <div class="kv-item-content">
+                <input type="text" placeholder="简介" name="vlable" maxlength="30"/>
+              </div>
+            </div>
+            <div class="kv-item ue-clear">
+              <label>
+               <span class="impInfo">
+                    *
+                  </span>
+                播放地址
+              </label>
+              <div class="kv-item-content">
+                <input type="text" placeholder="简介" name="vurl" />
+              </div>
+            </div>
+            <div class="subfild-content remarkes-info">
+              <div class="kv-item ue-clear">
+                <label>                 
+                  备注内容
+                </label>
+                <div class="kv-item-content">
+                  <textarea placeholder="备注内容" id="remark" name="vremark" style="width:600px;height:50px;">
+                  </textarea>
+                </div>
+              </div>
+            </div>
+
+            <div class="buttons">
+              <input class="button" type="submit" value="提交" />
+              <a class="button btn btn-primary" href="/admin/movie/loadmovies;" >
+                返回
+              </a>
+            </div>
+          </div>
         </form>
+      </div>
     </div>
-</div>
-</body>
-<script>
-  var eleFile = document.querySelector('.file');
-  var image = document.querySelector("img")
-  var button = document.querySelector("button")
-  // 压缩图片需要的一些元素和对象
-  var targetWidth, targetHeight
-  var reader = new FileReader(),
-  img = new Image();
- 
-  // 选择的文件对象
-  var file = null;
- 
-  // base64地址图片加载完毕后
-  img.onload = function () {
-    // 图片原始尺寸
-    var originWidth = this.width;
-    var originHeight = this.height;
-    // 最大尺寸限制
-    var maxWidth = 600,
+  </body>
+  <script>
+    var eleFile = document.querySelector('.file');
+    var image = document.querySelector("img")
+    var button = document.querySelector("button")
+    // 压缩图片需要的一些元素和对象
+    var targetWidth, targetHeight
+    var reader = new FileReader(),
+    img = new Image();
+
+    // 选择的文件对象
+    var file = null;
+
+    // base64地址图片加载完毕后
+    img.onload = function () {
+      // 图片原始尺寸
+      var originWidth = this.width;
+      var originHeight = this.height;
+      // 最大尺寸限制
+      var maxWidth = 600,
       maxHeight = 500;
-    // 目标尺寸
-    targetWidth = originWidth,
+      // 目标尺寸
+      targetWidth = originWidth,
       targetHeight = originHeight;
-    // 图片尺寸超过400x400的限制
-    if (originWidth > maxWidth || originHeight > maxHeight) {
-      if (originWidth / originHeight > maxWidth / maxHeight) {
-        // 更宽，按照宽度限定尺寸
-        targetWidth = maxWidth;
-        targetHeight = Math.round(targetWidth* (originHeight / originWidth));
-      } else {
-        targetHeight = maxHeight;
-        targetWidth = Math.round(targetHeight* (originWidth / originHeight));
+      // 图片尺寸超过400x400的限制
+      if (originWidth > maxWidth || originHeight > maxHeight) {
+        if (originWidth / originHeight > maxWidth / maxHeight) {
+          // 更宽，按照宽度限定尺寸
+          targetWidth = maxWidth;
+          targetHeight = Math.round(targetWidth* (originHeight / originWidth));
+        } else {
+          targetHeight = maxHeight;
+          targetWidth = Math.round(targetHeight* (originWidth / originHeight));
+        }
       }
-    }
-    image.width = targetWidth
-    image.height = targetHeight
-  };
- 
-  // 文件base64化，以便获知图片原始尺寸
-  reader.onload = function (e) {
-    img.src = e.target.result;
-    image.src = e.target.result
-  };
-  eleFile.addEventListener('change', function (event) {
-    file = event.target.files[0];
-    // 选择的文件是图片
-    if (file.type.indexOf("image") == 0) {
-      reader.readAsDataURL(file);
-    }
-  });
-  button.addEventListener('click', function () {
-    if (!file) {
-      return
-    }
-    var formData = new FormData()
-    formData.append(file.name, file)
-    uploadImage(formData)
-  })
- 
-  function uploadImage(formdata) {
-    // ....调用ajax上传图片
-  }
-</script>
-</html>
+      image.width = targetWidth
+      image.height = targetHeight
+      };
+
+      // 文件base64化，以便获知图片原始尺寸
+      reader.onload = function (e) {
+        img.src = e.target.result;
+        image.src = e.target.result
+        };
+        eleFile.addEventListener('change', function (event) {
+          file = event.target.files[0];
+          // 选择的文件是图片
+          if (file.type.indexOf("image") == 0) {
+            reader.readAsDataURL(file);
+          }
+          });
+          button.addEventListener('click', function () {
+            if (!file) {
+              return
+            }
+            var formData = new FormData()
+            formData.append(file.name, file)
+            uploadImage(formData)
+            })
+
+            function uploadImage(formdata) {
+              // ....调用ajax上传图片
+            }
+          </script>
+        </html>

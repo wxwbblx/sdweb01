@@ -30,9 +30,12 @@ public class MyTools {
 			String filename = file.getOriginalFilename();
 			String prefix = filename.substring(filename.lastIndexOf("."));
 			int endIndex = request.getRequestURL().length() - request.getRequestURI().length() + 1;
-			String baseURL = request.getRequestURL().substring(0, endIndex);
-
-			String path = ClassUtils.getDefaultClassLoader().getResource("").getPath() + "static/";
+			String baseURL = request.getRequestURL().substring(0, endIndex)+"poster/";
+			System.out.println("baseURL="+baseURL);
+			String path = ClassUtils.getDefaultClassLoader().getResource("").getPath() + "static/poster";
+			
+			
+			System.out.println("path="+path);
 
 			/*
 			 * System.out.println(path);
