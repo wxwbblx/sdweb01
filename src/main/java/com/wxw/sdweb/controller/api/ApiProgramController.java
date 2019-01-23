@@ -213,10 +213,10 @@ public class ApiProgramController {
 	public Result getCurrById(@PathVariable("id") int id) {
 
 		Movie obj = movieService.findById(id);
-		System.out.println("getCurrById"+obj.getId());
+		//System.out.println("getCurrById"+obj.getId());
 
-		List<Videoinfor> subobjs = videoinforService.findByVid(obj.getId());
-		obj.setVideoinfor(subobjs);
+		//List<Videoinfor> subobjs = videoinforService.findByVid(obj.getId());
+		//obj.setVideoinfor(subobjs);
 
 		if (null != obj) {
 			return ResultUtils.success(obj);
@@ -225,6 +225,23 @@ public class ApiProgramController {
 		}
 	}
 
+	
+	@SuppressWarnings({ "rawtypes", "unused" })
+	@RequestMapping(value = "/api/v1/movie/getPlay/{vid}/{vname}", method = RequestMethod.GET)
+	public Result getCurrPlay(@PathVariable("vid") int vid,@PathVariable("vname") String vname) {
+
+		//Movie obj = movieService.findById(id);
+		//System.out.println("getCurrPlay vid="+vid+"     vname="+vname);
+
+		Videoinfor subobjs = videoinforService.findByVidid(vid, vname);
+		
+
+		if (null != subobjs) {
+			return ResultUtils.success(subobjs);
+		} else {
+			return ResultUtils.warn(ResultCode.PARAMETER_ERROR);
+		}
+	}
 	/*
 	 * @SuppressWarnings("rawtypes")
 	 * 

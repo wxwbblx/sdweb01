@@ -40,4 +40,10 @@ public class VideoinforServiceImpl implements IVideoinforService {
 		return videoinforDao.update(videoinfor);
 	}
 
+	@Override
+	public Videoinfor findByVidid(int vid, String vname) {
+		// TODO Auto-generated method stub
+		return videoinforDao.findByVidid(vid, vname);
+	}
+
 }

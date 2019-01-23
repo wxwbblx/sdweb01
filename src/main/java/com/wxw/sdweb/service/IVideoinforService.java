@@ -7,6 +7,8 @@ import com.wxw.sdweb.vo.Videoinfor;
 
 public interface IVideoinforService {
 	public List<Videoinfor> findByVid(int vid);
+	
+	public Videoinfor findByVidid(int vid,String vname);
 
 	int delete(int id);
 
