@@ -90,8 +90,8 @@
                     </label>
                     <div class="kv-item-content">
                       <h6>
-                        <label th:text="${movie.ptype}">
-                          影片名称:
+                        <label th:switch="${movie.ptype}">
+                          <p th:case="'3'">影视专区</p>
                         </label>
                       </h6>
                     </div>

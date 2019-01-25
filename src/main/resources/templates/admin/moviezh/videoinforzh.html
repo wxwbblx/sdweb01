@@ -85,8 +85,8 @@ window.UMEDITOR_HOME_URL = 'umeditor/';  // 请换成绝对路径
                     </label>
                     <div class="kv-item-content">
                       <h6>
-                        <label th:text="${movie.ptype}">
-                          影片名称:
+                        <label th:switch="${movie.ptype}">
+                          <p th:case="'4'">综合专区</p>
                         </label>
                       </h6>
                     </div>
@@ -157,9 +157,9 @@ window.UMEDITOR_HOME_URL = 'umeditor/';  // 请换成绝对路径
 		              </label>
 		              <div class="kv-item-content">
 		                <h6>
-		                  <label th:text="${movie.director}">
+		                  <p th:text="${movie.director}">
 		                    影片名称:
-		                  </label>
+		                  </p>
 		                </h6>
 		              </div>
 		            </div>
@@ -174,9 +174,9 @@ window.UMEDITOR_HOME_URL = 'umeditor/';  // 请换成绝对路径
 		              </label>
 		              <div class="kv-item-content">
 		                <h6>
-		                  <label th:text="${movie.tostar}">
+		                  <p th:text="${movie.tostar}">
 		                    影片名称:
-		                  </label>
+		                  </p>
 		                </h6>
 		              </div>
 		            </div>
