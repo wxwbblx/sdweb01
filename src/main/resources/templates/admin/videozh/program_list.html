@@ -116,7 +116,7 @@
 	                <th scope="col">日期</td>
 	                <th scope="col">是否最新</td>
 	                <th scope="col">备注</td>
-	                <th align="center" scope="col" colspan="2">操作</td>	               
+	                <th align="center" scope="col" colspan="3">操作</td>	               
 	                </tr>
 	                </thead>
 	                <tbody>
@@ -128,6 +128,7 @@
 	                <td th:text="${obj.pdate}">1</td>
 	                <td th:switch="${obj.isnew}"><p th:case="'1'">是</p><p th:case="'0'">否</p></td>              
 	                <td th:text="${obj.remark}">2asdfasdf</td>
+	                <td ><a th:href="@{/admin/zh/paly(id=${obj.id})}">预览</a></td>
 	                <td ><a th:href="@{/admin/zh/prog_update_load(id=${obj.id})}">修改</a></td>	                
 	                <td ><a th:href="@{/admin/zh/prog_del(id=${obj.id})}">删除</a></td>
 	                </tr>

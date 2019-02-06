@@ -320,4 +320,30 @@ public class ProgramController {
 
 	}
 	
+	@RequestMapping(value = "/admin/paly", method = RequestMethod.GET)
+	@ResponseBody
+	public ModelAndView paly(Map<String, Object> map, @RequestParam("id") int id) {
+		Program program = new Program();
+		program = programService.find(id);
+		//Menu obj = menuService.findById(ptype);
+		ModelAndView mv = null;
+		mv = new ModelAndView("/admin/video/play");
+		map.put("pro", program);
+		//map.put("obj", obj);
+		return mv;
+	}
+	
+	
+	@RequestMapping(value = "/admin/zh/paly", method = RequestMethod.GET)
+	@ResponseBody
+	public ModelAndView palyzh(Map<String, Object> map, @RequestParam("id") int id) {
+		Program program = new Program();
+		program = programService.find(id);
+		//Menu obj = menuService.findById(ptype);
+		ModelAndView mv = null;
+		mv = new ModelAndView("/admin/videozh/play");
+		map.put("pro", program);
+		//map.put("obj", obj);
+		return mv;
+	}
 }
