@@ -355,4 +355,31 @@ public class MovieController {
 
 	}
 
+	
+	@RequestMapping(value = "/admin/video/movie_loads", method = RequestMethod.GET)
+	@ResponseBody
+	public ModelAndView loadVoide(Map<String, Object> map, @RequestParam("id") int id) {
+		
+		Movie movie = movieService.findById(id);
+		map.put("movie", movie);
+		List<Videoinfor> objs = videoinforService.findByVid(id);
+		
+		ModelAndView mv = new ModelAndView("/admin/movie/movie_loads");
+		map.put("objs", objs);
+		return mv;
+	}
+	
+	@RequestMapping(value = "/admin/video/movie_play", method = RequestMethod.GET)
+	@ResponseBody
+	public ModelAndView playVoide(Map<String, Object> map, @RequestParam("vid") int vid, @RequestParam("vname") String vname) {
+		
+		/*Movie movie = movieService.findById(id);
+		map.put("movie", movie);*/
+		
+		Videoinfor obj01 = videoinforService.findByVidid(vid, vname);
+		
+		ModelAndView mv = new ModelAndView("/admin/movie/play");
+		map.put("obj01", obj01);
+		return mv;
+	}
 }
