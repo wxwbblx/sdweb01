@@ -75,12 +75,8 @@
                     </label>
                     <div class="kv-item-content">
                       <select name="vtype">
-                        <option>
-                          战争
-                        </option >
-                        <option>
-                          爱情喜剧
-                        </option >
+                        <option th:each="obj:${videotypes}" th:value="${obj.vtype}" th:text="${obj.vtype}">
+                        蔬菜</option> 
                       </select>
                     </div>
 
@@ -96,6 +92,8 @@
                     </label>
                     <div class="kv-item-content">
                       <select name="ptype">
+                      
+                      
                         <option  th:value="${obj.id}" value="1"  th:text="${obj.mname}">
                           S
                         </option >
@@ -147,13 +145,12 @@
                       地区
                     </label>
                     <div class="kv-item-content">
+                    
+                   
                       <select name="region">
-                        <option >
-                          北美
-                        </option >
-                        <option >
-                          南美
-                        </option >
+                      
+                        <option th:each="obj:${bregions}" th:value="${obj.lname}" th:text="${obj.lname}">
+                        蔬菜</option>                        
                       </select>
                     </div>
                     <span class="kv-item-tip success">

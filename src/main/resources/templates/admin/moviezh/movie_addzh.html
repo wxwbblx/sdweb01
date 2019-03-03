@@ -83,12 +83,8 @@
                     </label>
                     <div class="kv-item-content">
                       <select name="vtype">
-                        <option>
-                          战争
-                        </option >
-                        <option>
-                          爱情喜剧
-                        </option >
+                       <option th:each="obj:${videotypes}" th:value="${obj.vtype}" th:text="${obj.vtype}">
+                        蔬菜</option> 
                       </select>
                     </div>
                     <span class="kv-item-tip error">
@@ -146,7 +142,7 @@
                       <input 
                           type="text"
                           placeholder="播放日期"
-                          onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"
+                          onfocus="WdatePicker({dateFmt:'yyyy'})"
                            name="releasetime"/>
                       <i class="time-icon">
                       </i>
@@ -163,12 +159,8 @@
                     </label>
                     <div class="kv-item-content">
                       <select name="region">
-                        <option >
-                          北美
-                        </option >
-                        <option >
-                          南美
-                        </option >
+                         <option th:each="obj:${bregions}" th:value="${obj.lname}" th:text="${obj.lname}">
+                        蔬菜</option>   
                       </select>
                     </div>
                     <span class="kv-item-tip success">
