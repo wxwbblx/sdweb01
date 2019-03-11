@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <link rel="stylesheet" type="text/css" href="../../bs3/css/style.css" />
+<link rel="stylesheet" type="text/css" href="../../bs3/css/WdatePicker.css" />
+<link rel="stylesheet" type="text/css" href="../../bs3/css/skin_/form.css" />
+<link href="umeditor/themes/default/_css/umeditor.css" type="text/css" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="../../bs3/css/jquery.grid.css" />
+<link rel="stylesheet" type="text/css" href="../../bs/css/bootstrap.min.css">
+
+<script type="text/javascript" src="../../bs3/js/jquery.js"></script>
+<script type="text/javascript" src="../../bs3/js/global.js"></script>
+<script type="text/javascript" src="../../bs3/js/jquery.select.js"></script>
+<script type="text/javascript" src="../../bs3/js/WdatePicker.js"></script>
+<script type="text/javascript">
+window.UMEDITOR_HOME_URL = 'umeditor/';  // 请换成绝对路径
+</script>
+<script type="text/javascript" src="../../bs3/js/umeditor.config.js"></script>
+<script type="text/javascript" src="../../bs3/js/editor_api.js"></script>
+<script type="text/javascript" src="../../bs3/umeditor/lang/zh-cn/zh-cn.js"></script>
+<title th:text="${title}">a</title>
+</head>
+
+<body>
+<div id="container">
+	<div id="hd">
+    </div>
+    <div id="bd">
+	    <form class="form-signin" role="form" action="/admin/ad/add" enctype="multipart/form-data" method="post">
+	    	<div id="main">
+	            <h2 class="subfild">
+	            	<span>广告编辑</span>
+	            </h2>            
+	            <div class="subfild-content base-info">
+	            	<div class="kv-item ue-clear">
+	                	<label><span class="impInfo">*</span>广告名称</label>
+	                	<div class="kv-item-content">
+	                    	<input type="text" placeholder="广告名称" name="adname" maxlength="30" />
+	                    </div>
+	                    <span class="kv-item-tip">广告名称字数限制在30个字符</span>
+	                </div>
+	                <div class="kv-item ue-clear">
+	                	<label><span class="impInfo">*</span>广告标题</label>
+	                	<div class="kv-item-content">
+	                    	<input type="text" placeholder="广告标题" name="adtitle"  maxlength="35" />
+	                    </div>
+	                    <span class="kv-item-tip">广告标题字数限制在35个字符</span>
+	                </div>
+	                <div class="kv-item ue-clear">
+	                	<label>展现类型</label>
+	                	<div class="kv-item-content">
+	                    	<select name="adtype">
+	                        	<option>图片</option>
+	                            <option>视频</option>
+	                        </select>
+	                    </div>
+	                    <span class="kv-item-tip success">成功信息</span>
+	                </div>
+	                <div class="kv-item ue-clear time">
+	                	<label><span class="impInfo">*</span>播放日期</label>
+	                	<div class="kv-item-content">
+	                    	<input type="text" placeholder="播放日期" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" name="adtime"/>
+	                        <i class="time-icon"></i>
+	                    </div>
+	                    <span class="kv-item-tip error">这是一个错误信息</span>
+	                </div>
+	                               
+	                <div class="kv-item ue-clear">
+	                	<label>所在位置</label>
+	                	<div class="kv-item-content">
+	                    	<select name="adpage">
+	                    	<option th:each="obj:${objs}" th:value="${obj.id}" th:text="${obj.mname}"></option>
+	                        </select>
+	                    </div>
+	                    <span class="kv-item-tip success">成功信息</span>
+	                </div>
+	                
+	                <div class="kv-item ue-clear">
+	                	<label>是否启用</label>
+	                	<div class="kv-item-content">
+	                    	<span class="choose">
+	                            <span class="checkboxouter">
+	                                <input type="radio" name="isenable" checked="checked" value="1"/>
+	                                <span class="radio"></span>
+	                            </span>
+	                            <span class="text">是</span>
+	                        </span>
+	                    	<span class="choose">
+	                            <span class="checkboxouter">
+	                                <input type="radio" name="isenable" value="0"/>
+	                                <span class="radio"></span>
+	                            </span>
+	                            <span class="text">否</span>
+	                        </span>
+	                        
+	                    </div>
+	                    <span class="kv-item-tip">标题字数限制在35个字符</span>
+	                </div>
+	                
+	                <!--  
+	                <div class="kv-item ue-clear">
+	                	<label><span class="impInfo">*</span>广告内容上传</label>
+	                	<div class="kv-item-content file">
+							<span class="text"></span>
+	                        <input type="file"  name="file" />
+	                        <input type="button" class="button normal long2" value="浏览.." />
+	                    </div>
+	                    <span class="kv-item-tip">标题字数限制在35个字符</span>
+	                </div>-->
+	            </div>
+	            <h2 class="subfild">
+	            	<span>广告内容</span>
+	            </h2>
+	            <div class="subfild-content remarkes-info">
+	            	 <div class="kv-item ue-clear">
+	                	<label>图片预览</label>
+	                	<div class="kv-item-content">
+	                    	<img border="1" src="../../images/1.jpg"  width="400" height="400" alt="图片预览" />
+	                    </div>
+	                    <span class="kv-item-tip success"></span>
+	                </div>
+	            	<div class="kv-item ue-clear">
+	                	<label><span class="impInfo">*</span>广告内容</label>
+	                	<div class="kv-item-content file">
+							<span class="text"></span>
+							 <!--  <input type="file" multiple class="file" accept="image/*" >-->
+							 <input type="file" multiple class="file" name="file" accept="image/*"/>
+							  <input type="button" class="button normal long2" value="浏览.." onchange = "selectFile()"/>
+                               <img src="" alt="">
+                              
+	                      <!--   <input type="file"  name="file" accept="image/*"/>
+	                        <input type="button" class="button normal long2" value="浏览.." onchange = "selectFile()"/> -->
+	                    </div>
+	                    <span class="kv-item-tip"></span>
+	                </div>
+	            </div>
+	            
+	            <h2 class="subfild">
+	            	<span>备注资料</span>
+	            </h2>
+	            
+	            <div class="subfild-content remarkes-info">
+	            	<div class="kv-item ue-clear">
+	                	<label><span class="impInfo">*</span>备注资料</label>
+	                	<div class="kv-item-content">
+	                    	<textarea placeholder="备注资料" id="remark" name="remark" style="width:400px;height:100px;" ></textarea>
+	                    </div>
+	                </div>
+	            </div>
+	           
+	            <h2 class="subfild">
+	            	<span></span>
+	            </h2>
+	            
+	            <div class="buttons">
+	                <input class="button" type="submit" value="提交" onclick="/admin/prog_add" /> 
+	                <a class="button btn btn-primary" href="/admin/ad/load;" >返回</a>
+	            </div>
+	            
+	        </div>
+         </form>
+    </div>
+    
+</div>
+
+    
+</body>
+<script>
+  var eleFile = document.querySelector('.file');
+  var image = document.querySelector("img")
+  var button = document.querySelector("button")
+  // 压缩图片需要的一些元素和对象
+  var targetWidth, targetHeight
+  var reader = new FileReader(),
+  img = new Image();
+ 
+  // 选择的文件对象
+  var file = null;
+ 
+  // base64地址图片加载完毕后
+  img.onload = function () {
+    // 图片原始尺寸
+    var originWidth = this.width;
+    var originHeight = this.height;
+    // 最大尺寸限制
+    var maxWidth = 600,
+      maxHeight = 500;
+    // 目标尺寸
+    targetWidth = originWidth,
+      targetHeight = originHeight;
+    // 图片尺寸超过400x400的限制
+    if (originWidth > maxWidth || originHeight > maxHeight) {
+      if (originWidth / originHeight > maxWidth / maxHeight) {
+        // 更宽，按照宽度限定尺寸
+        targetWidth = maxWidth;
+        targetHeight = Math.round(targetWidth* (originHeight / originWidth));
+      } else {
+        targetHeight = maxHeight;
+        targetWidth = Math.round(targetHeight* (originWidth / originHeight));
+      }
+    }
+    image.width = targetWidth
+    image.height = targetHeight
+  };
+ 
+  // 文件base64化，以便获知图片原始尺寸
+  reader.onload = function (e) {
+    img.src = e.target.result;
+    image.src = e.target.result
+  };
+  eleFile.addEventListener('change', function (event) {
+    file = event.target.files[0];
+    // 选择的文件是图片
+    if (file.type.indexOf("image") == 0) {
+      reader.readAsDataURL(file);
+    }
+  });
+  button.addEventListener('click', function () {
+    if (!file) {
+      return
+    }
+    var formData = new FormData()
+    formData.append(file.name, file)
+    uploadImage(formData)
+  })
+ 
+  function uploadImage(formdata) {
+    // ....调用ajax上传图片
+  }
+</script>
+</html>

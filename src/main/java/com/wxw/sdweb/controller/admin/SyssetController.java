@@ -23,5 +23,21 @@ public class SyssetController {
 		return mv;
 
 	}
+	
+	
+	
+	@RequestMapping(value = "/admin/get_region")
+	@ResponseBody
+	public ModelAndView getRegionList(Map<String, Object> map) {
+		ModelAndView mv = new ModelAndView("/admin/region/regionlist");
+		map.put("pagetitle", "关于我们");
+		map.put("title", "关于我们");
+		map.put("copyright", "Copyright 2018 by wxw. All rights reserved.");
+		return mv;
+
+	}
+	
+	
+	
 
 }
