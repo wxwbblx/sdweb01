@@ -51,7 +51,7 @@
 								</span>
 							</div>
 						</div>
-						
+						 
 						<div class="kv-item ue-clear">
 							<label>广告页面选择:</label>
 							<div class="kv-item-content">
@@ -66,7 +66,7 @@
 						</div> -->
 					</div>
 					<div class="search-button">
-						<!--  <input class="button" type="button" value="搜索一下" />  -->
+						<!-- <input class="button" type="button" value="搜索一下" />  -->
 					</div>
 				</div>
 
@@ -77,7 +77,7 @@
 									class="text">名称</span>
 							</span>
 						</span> <i class="list"></i> <i class="card"></i>
-						</span> <span class="optarea"> <a href="/admin/region/region_add_load"
+						</span> <span class="optarea"> <a href="/admin/vtype/region_add_load"
 							class="add"> <i class="icon"></i> <span class="text">添加</span>
 						</a>
 						</span>
@@ -90,7 +90,7 @@
 							<tr>
 								<th scope="col">编号
 								</td>
-								<th scope="col">地区名称
+								<th scope="col">视频类型
 								</td>								
 								<th scope="col">备注
 								</td>
@@ -101,11 +101,11 @@
 						<tbody>
 							<tr th:each="obj:${objs}">
 								<td class="ui-table-td" th:text="${obj.id}">111</td>
-								<td th:text="${obj.lname}">1</td>
+								<td th:text="${obj.vtype}">1</td>
 								<td th:text="${obj.remark}">2</td>
-								<td><a th:href="@{/admin/region/region_update_load(id=${obj.id})}">修改</a></td>
+								<td><a th:href="@{/admin/vtype/vtype_update_load(id=${obj.id})}">修改</a></td>
 
-								<td><a th:href="@{/admin/region/region_del(id=${obj.id})}">删除</a></td>
+								<td><a th:href="@{/admin/vtype/vtype_del(id=${obj.id})}">删除</a></td>
 							</tr>
 						</tbody>
 					</table>

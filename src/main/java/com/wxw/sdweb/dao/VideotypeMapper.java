@@ -17,9 +17,12 @@ public interface VideotypeMapper {
 
 	@Select("select * from  videotype ") // order by pstime asc
 	public List<Videotype> findAll();
+	
+	@Select("select *  from videotype where id  = #{id}")
+	public Videotype findById(int id);
 
 	@Insert("insert into videotype (vtype,ptype,remark) " + "values"
-			+ "(#{lname},#{remark})")
+			+ "(#{vtype},#{ptype},#{remark})")
 	@Options(useGeneratedKeys = true, keyColumn = "id", keyProperty = "id")
 	public int insert(Videotype videotype);
 

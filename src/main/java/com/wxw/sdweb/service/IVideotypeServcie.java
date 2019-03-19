@@ -8,6 +8,8 @@ public interface IVideotypeServcie {
 
 	List<Videotype> findAll();
 
+	Videotype findById(int id);
+
 	int delete(int id);
 
 	int insert(Videotype obj);

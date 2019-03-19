@@ -41,4 +41,10 @@ public class VideotypeServcieImpl implements IVideotypeServcie {
 		return videotypeDao.update(videotype);
 	}
 
+	@Override
+	public Videotype findById(int id) {
+		// TODO Auto-generated method stub
+		return videotypeDao.findById(id);
+	}
+
 }
