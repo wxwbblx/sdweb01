@@ -28,6 +28,7 @@ public class MyTools {
 	 
 	 public static String uploadFile(MultipartFile file, HttpServletRequest request) {
 			String filename = file.getOriginalFilename();
+			//System.out.println("filename:"+filename+"====================================");
 			String prefix = filename.substring(filename.lastIndexOf("."));
 			int endIndex = request.getRequestURL().length() - request.getRequestURI().length() + 1;
 			String baseURL = request.getRequestURL().substring(0, endIndex)+"poster/";

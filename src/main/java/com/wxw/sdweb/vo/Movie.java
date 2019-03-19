@@ -22,6 +22,7 @@ public class Movie {
 	private int updatetext;
 	private String remark;
 	private List<Videoinfor> videoinfor;
+	
 	public int getId() {
 		return id;
 	}

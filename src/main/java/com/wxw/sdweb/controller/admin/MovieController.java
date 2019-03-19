@@ -80,12 +80,12 @@ public class MovieController {
 		Menu obj = menuService.findById(ptype);
 
 		List<Bregion> bregions = bregionService.findAll();
-		List<Videotype> videotypes = videotypeServcie.findAll();
-
-		ModelAndView mv = new ModelAndView("/admin/0/movie_add");
-		map.put("obj", obj);
 		map.put("bregions", bregions);
+		List<Videotype> videotypes = videotypeServcie.findAll();
 		map.put("videotypes", videotypes);
+
+		ModelAndView mv = new ModelAndView("/admin/movie/movie_add");
+		map.put("obj", obj);
 		return mv;
 	}
 
@@ -146,13 +146,86 @@ public class MovieController {
 	 * 节目清单添加页面加载 作者：王宣武
 	 * 
 	 */
-	@RequestMapping(value = "/admin/movie/movie_update_load")
+	@RequestMapping(value = "/admin/movie/movie_update_load", method = RequestMethod.GET)
 	@ResponseBody
-	public ModelAndView loadMovieUpdate(Map<String, Object> map) {
+	public ModelAndView loadMovieUpdate(Map<String, Object> map, @RequestParam("id") int id) {
 		Menu obj = menuService.findById(ptype);
-		ModelAndView mv = new ModelAndView("/admin/movie/movie_update");
 		map.put("obj", obj);
+
+		List<Bregion> bregions = bregionService.findAll();
+		map.put("bregions", bregions);
+
+		List<Videotype> videotypes = videotypeServcie.findAll();
+		map.put("videotypes", videotypes);
+
+		Movie movie = movieService.findById(id);
+		System.out.println("A----------------------" + movie.getVname());
+		map.put("movie", movie);
+
+		ModelAndView mv = new ModelAndView("/admin/movie/movie_update");
+
 		return mv;
+	}
+
+	/*
+	 * 功能：节目清单数据修改 作者：王宣武
+	 * 
+	 * @param map
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/admin/movie/movie_update", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView MovieUpdate(Map<String, Object> map, @RequestParam("id") int id,@RequestParam("vname") String vname,
+			@RequestParam("vtype") String vtype, @RequestParam("ptype") String ptype, @RequestParam("vtime") int vtime,
+			@RequestParam("releasetime") String releasetime, @RequestParam("region") String region,
+			@RequestParam("director") String director, @RequestParam("tostar") String tostar,
+			@RequestParam("synopsis") String synopsis, @RequestParam("isnew") int isnew,
+			@RequestParam("ishot") int ishot, @RequestParam("isnominate") int isnominate,
+			@RequestParam("sylloge") int sylloge, @RequestParam("updatetext") int updatetext,
+			@RequestParam("remark") String remark, @RequestParam("file") MultipartFile file,
+			HttpServletRequest request) {
+		String vurl = "www.163.com"; // @RequestParam("vurl") String vurl,
+		String furl="";//fileToUpload.getSize()
+		Movie movie = new Movie();
+		if(file.getSize()>0) {
+			
+		    furl = MyTools.uploadFile(file, request);
+		    movie.setPoster(furl);
+		}	
+		
+		
+		movie.setId(id);
+		movie.setVname(vname);
+		movie.setVtype(vtype);
+		movie.setPtype(ptype);
+		movie.setVtime(vtime);
+		movie.setReleasetime(releasetime);
+		movie.setRegion(region);
+		movie.setDirector(director);
+		movie.setTostar(tostar);
+		movie.setSynopsis(synopsis);
+		
+		movie.setVurl(vurl);
+		movie.setIshot(ishot);
+		movie.setIsnew(isnew);
+		movie.setIsnominate(isnominate);
+		movie.setSylloge(sylloge);
+		movie.setUpdatetext(updatetext);
+		movie.setRemark(remark);
+
+		// System.out.println(movie);
+		// ============================================
+		int rows = movieService.update(movie);
+		//int rows=1;
+		ModelAndView mv = null;
+		if (rows == 0) {
+			mv = new ModelAndView("/admin/video/program_add");
+		} else {
+			mv = new ModelAndView("redirect:/admin/movie/loadmovies");
+		}
+		return mv;
+
 	}
 
 	/**
@@ -225,15 +298,13 @@ public class MovieController {
 			HttpServletRequest request) {
 		String vurl = "www.163.com"; // @RequestParam("vurl") String vurl,
 
-		String furl ="";
-		if(file.getOriginalFilename().toString().equals(""))
-		{
-			furl="";
-		}
-		else {
+		String furl = "";
+		if (file.getOriginalFilename().toString().equals("")) {
+			furl = "";
+		} else {
 			furl = MyTools.uploadFile(file, request);
 		}
-		
+
 		Movie movie = new Movie();
 		movie.setVname(vname);
 		movie.setVtype(vtype);
@@ -277,7 +348,7 @@ public class MovieController {
 			movie.setSylloge(sylloge);
 		}
 
-		if ((""+updatetext).equals("")) {
+		if (("" + updatetext).equals("")) {
 			movie.setUpdatetext(0);
 		} else {
 			movie.setUpdatetext(updatetext);
