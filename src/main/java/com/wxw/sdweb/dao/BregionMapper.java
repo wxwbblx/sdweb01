@@ -16,6 +16,9 @@ public interface BregionMapper {
 	
 	@Select("select * from  bregion ") // order by pstime asc
 	public List<Bregion> findAll();
+	
+	@Select("select * from Bregion where id  = #{id}")
+	public Bregion findById(int id);
 
 	@Insert("insert into bregion (lname,remark) " + "values"
 			+ "(#{lname},#{remark})")

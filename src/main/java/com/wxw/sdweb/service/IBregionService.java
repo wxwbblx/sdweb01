@@ -13,6 +13,8 @@ public interface IBregionService {
 
 	List<Bregion> findAll();
 
+	Bregion findById(int id);
+
 	int delete(int id);
 
 	int insert(Bregion obj);

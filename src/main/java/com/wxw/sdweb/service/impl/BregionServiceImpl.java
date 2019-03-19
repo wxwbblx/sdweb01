@@ -41,4 +41,8 @@ public class BregionServiceImpl implements IBregionService {
 		return bregionDao.update(bregion);
 	}
 
+	@Override
+	public Bregion findById(int id) {		
+		return bregionDao.findById(id);
+	}
 }

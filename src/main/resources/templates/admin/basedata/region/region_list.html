@@ -77,7 +77,7 @@
 									class="text">名称</span>
 							</span>
 						</span> <i class="list"></i> <i class="card"></i>
-						</span> <span class="optarea"> <a href="/admin/ad/load_add"
+						</span> <span class="optarea"> <a href="/admin/region/region_add_load"
 							class="add"> <i class="icon"></i> <span class="text">添加</span>
 						</a>
 						</span>
@@ -90,20 +90,8 @@
 							<tr>
 								<th scope="col">编号
 								</td>
-								<th scope="col">广告名称
-								</td>
-								<th scope="col">标题
-								</td>
-								<th scope="col">类型
-								</td>
-								<th scope="col">广告地址
-								</td>
-								<th scope="col">日期
-								</td>
-								<th scope="col">位置
-								</td>
-								<th scope="col">是否启用
-								</td>
+								<th scope="col">地区名称
+								</td>								
 								<th scope="col">备注
 								</td>
 								<th align="center" scope="col" colspan="2">操作
@@ -113,18 +101,11 @@
 						<tbody>
 							<tr th:each="obj:${objs}">
 								<td class="ui-table-td" th:text="${obj.id}">111</td>
-								<td th:text="${obj.adname}">1</td>
-								<td th:text="${obj.adtitle}">1</td>
-								<td th:text="${obj.adtype}">2</td>
-								<td ><img width="80" height="30" th:src="${obj.adurl}" alt="二维码" /></td>
-								<td th:text="${obj.adtime}">2</td>
-								<td th:switch="${obj.adpage}"><p th:case="'1'">影视热播</p><p th:case="'2'">综合精选</p>
-								<p th:case="'3'">影视专区</p><p th:case="'4'">综合专区</p></td>
-								<td th:switch="${obj.isenable}"><p th:case="'1'">启用</p><p th:case="'0'">禁用</p></td>
+								<td th:text="${obj.lname}">1</td>
 								<td th:text="${obj.remark}">2</td>
-								<td><a th:href="@{/admin/ad/load_update(id=${obj.id})}">修改</a></td>
+								<td><a th:href="@{/admin/region/region_update_load(id=${obj.id})}">修改</a></td>
 
-								<td><a th:href="@{/admin/ad/del(id=${obj.id})}">删除</a></td>
+								<td><a th:href="@{/admin/region/region_del(id=${obj.id})}">删除</a></td>
 							</tr>
 						</tbody>
 					</table>
