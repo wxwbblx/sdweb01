@@ -562,6 +562,7 @@ public class MovieController {
 
 		Movie movie = movieService.findById(id);
 		map.put("movie", movie);
+	
 		List<Videoinfor> objs = videoinforService.findByVid(id);
 		ModelAndView mv = new ModelAndView("/admin/movie/videoinfor");
 		map.put("objs", objs);
@@ -636,6 +637,25 @@ public class MovieController {
 		map.put("obj01", obj01);
 		return mv;
 	}
+	
+	@RequestMapping(value = "/admin/video/movie_play_del", method = RequestMethod.GET)
+	@ResponseBody
+	public ModelAndView playVoide_del(Map<String, Object> map, @RequestParam("id") int id, 
+			@RequestParam("vid") int vid) {
+
+		/*
+		 * Movie movie = movieService.findById(id); map.put("movie", movie);
+		 */
+
+		int row = videoinforService.delete(id);
+		ModelAndView mv=null;
+		//if(row>0) {
+			mv = new ModelAndView("redirect:/admin/video/movie_loads?id=" + vid);
+		//}
+		//ModelAndView mv = new ModelAndView("/admin/movie/play");
+		//map.put("obj01", obj01);
+		return mv;
+	}
 
 	@RequestMapping(value = "/admin/videozh/movie_loads", method = RequestMethod.GET)
 	@ResponseBody
@@ -663,6 +683,25 @@ public class MovieController {
 
 		ModelAndView mv = new ModelAndView("/admin/moviezh/play");
 		map.put("obj01", obj01);
+		return mv;
+	}
+	
+	@RequestMapping(value = "/admin/videozh/movie_play_del", method = RequestMethod.GET)
+	@ResponseBody
+	public ModelAndView playVoideZh_del(Map<String, Object> map, @RequestParam("id") int id, 
+			@RequestParam("vid") int vid) {
+
+		/*
+		 * Movie movie = movieService.findById(id); map.put("movie", movie);
+		 */
+
+		int row = videoinforService.delete(id);
+		ModelAndView mv=null;
+		//if(row>0) {
+			mv = new ModelAndView("redirect:/admin/videozh/movie_loads?id=" + vid);
+		//}
+		//ModelAndView mv = new ModelAndView("/admin/movie/play");
+		//map.put("obj01", obj01);
 		return mv;
 	}
 

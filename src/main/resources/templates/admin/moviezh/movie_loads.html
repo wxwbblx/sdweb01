@@ -266,7 +266,9 @@
 	                <td th:text="${obj.vremark}">1</td>	               
 	                
 	                <td ><a th:href="@{/admin/videozh/movie_play(vid=${movie.id},vname=${obj.vname})}">预览</a>
-	                <!-- &nbsp;&nbsp;<a th:href="@{/admin/video/loadvideo(id=${obj.id})}">添加剧集</a>
+	                
+	                   &nbsp;&nbsp;
+	                <a th:href="@{/admin/videozh/movie_play_del(vid=${movie.id},id=${obj.id})}">删除</a><!-- &nbsp;&nbsp;<a th:href="@{/admin/video/loadvideo(id=${obj.id})}">添加剧集</a>
 	                &nbsp;&nbsp;<a th:href="@{/admin/movie/movie_update_load(id=${obj.id})}">修改</a>&nbsp;&nbsp;
 	                <a th:href="@{/admin/movie/movie_del(id=${obj.id})}">删除</a>	  -->               
 	                </td>	                

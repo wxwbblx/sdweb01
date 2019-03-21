@@ -242,13 +242,14 @@ window.UMEDITOR_HOME_URL = 'umeditor/';  // 请换成绝对路径
                 </td>
               </tr>
             </table>
+ 
 	            <h2 class="subfild">
 	            	<span>剧集列表</span>
 	            </h2> 
 	                <div class="kv-item ue-clear">
 	                	<label>第n集</label>
 	                	<div class="kv-item-content">
-	                    	<input type="text" placeholder="节目标题" name="vname" maxlength="30"/>	                    	
+	                    	  <input type="number"  placeholder="节目集数"   value="1" name="vname" min="1" max="999"/>                	
 	                    </div>	                    
 	                </div>
 	               <div class="kv-item ue-clear">
@@ -260,7 +261,7 @@ window.UMEDITOR_HOME_URL = 'umeditor/';  // 请换成绝对路径
 	                 <div class="kv-item ue-clear">
 	                	<label>播放地址</label>
 	                	<div class="kv-item-content">
-	                    	<input type="text" placeholder="简介" name="vurl" />	                    	
+	                    	<input type="text" placeholder="播放地址" name="vurl" />	                    	
 	                    </div>	                    
 	                </div> 
 	            <div class="subfild-content remarkes-info">
