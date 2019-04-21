@@ -104,12 +104,19 @@ public class MovieController {
 			@RequestParam("synopsis") String synopsis, @RequestParam("isnew") int isnew,
 			@RequestParam("ishot") int ishot, @RequestParam("isnominate") int isnominate,
 			@RequestParam("sylloge") int sylloge, @RequestParam("updatetext") int updatetext,
+			 @RequestParam("sorta") int sorta,
 			@RequestParam("remark") String remark, @RequestParam("file") MultipartFile file,
 			HttpServletRequest request) {
 		String vurl = "www.163.com"; // @RequestParam("vurl") String vurl,
-
-		String furl = MyTools.uploadFile(file, request);
+		String furl ="";
 		Movie movie = new Movie();
+        if(file.getSize()>0) {
+			
+		    furl = MyTools.uploadFile(file, request);
+		    movie.setPoster(furl);
+		}	
+		 
+		
 		movie.setVname(vname);
 		movie.setVtype(vtype);
 		movie.setPtype(ptype);
@@ -119,13 +126,13 @@ public class MovieController {
 		movie.setDirector(director);
 		movie.setTostar(tostar);
 		movie.setSynopsis(synopsis);
-		movie.setPoster(furl);
 		movie.setVurl(vurl);
 		movie.setIshot(ishot);
 		movie.setIsnew(isnew);
 		movie.setIsnominate(isnominate);
 		movie.setSylloge(sylloge);
 		movie.setUpdatetext(updatetext);
+		movie.setSorta(sorta);
 		movie.setRemark(remark);
 
 		// System.out.println(movie);
@@ -183,6 +190,7 @@ public class MovieController {
 			@RequestParam("synopsis") String synopsis, @RequestParam("isnew") int isnew,
 			@RequestParam("ishot") int ishot, @RequestParam("isnominate") int isnominate,
 			@RequestParam("sylloge") int sylloge, @RequestParam("updatetext") int updatetext,
+			@RequestParam("sorta") int sorta,
 			@RequestParam("remark") String remark, @RequestParam("file") MultipartFile file,
 			HttpServletRequest request) {
 		String vurl = "www.163.com"; // @RequestParam("vurl") String vurl,
@@ -212,6 +220,7 @@ public class MovieController {
 		movie.setIsnominate(isnominate);
 		movie.setSylloge(sylloge);
 		movie.setUpdatetext(updatetext);
+		movie.setSorta(sorta);
 		movie.setRemark(remark);
 
 		// System.out.println(movie);
@@ -294,6 +303,7 @@ public class MovieController {
 			@RequestParam("synopsis") String synopsis, @RequestParam("isnew") int isnew,
 			@RequestParam("ishot") int ishot, @RequestParam("isnominate") int isnominate,
 			@RequestParam("sylloge") int sylloge, @RequestParam("updatetext") int updatetext,
+			@RequestParam("sorta") int sorta,
 			@RequestParam("remark") String remark, @RequestParam("file") MultipartFile file,
 			HttpServletRequest request) {
 		String vurl = "www.163.com"; // @RequestParam("vurl") String vurl,
@@ -353,7 +363,7 @@ public class MovieController {
 		} else {
 			movie.setUpdatetext(updatetext);
 		}
-
+		movie.setSorta(sorta);
 		movie.setRemark(remark);
 
 		// System.out.println(movie);
@@ -429,6 +439,7 @@ public class MovieController {
 			@RequestParam("synopsis") String synopsis, @RequestParam("isnew") int isnew,
 			@RequestParam("ishot") int ishot, @RequestParam("isnominate") int isnominate,
 			@RequestParam("sylloge") int sylloge, @RequestParam("updatetext") int updatetext,
+			 @RequestParam("sorta") int sorta,
 			@RequestParam("remark") String remark, @RequestParam("file") MultipartFile file,
 			HttpServletRequest request) {
 		String vurl = "www.163.com"; // @RequestParam("vurl") String vurl,
@@ -458,6 +469,7 @@ public class MovieController {
 		movie.setIsnominate(isnominate);
 		movie.setSylloge(sylloge);
 		movie.setUpdatetext(updatetext);
+		movie.setSorta(sorta);
 		movie.setRemark(remark);
 
 		// System.out.println(movie);

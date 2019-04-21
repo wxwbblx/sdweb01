@@ -122,7 +122,7 @@
 	                <th scope="col">是否最新</td>
 	                <th scope="col">是否热播</td>
 	                <th scope="col">是否推荐</td>	                
-	              <!--  <th scope="col">备注</td> --> 
+	                <th scope="col">排序</td> 
 	                <th text-align="center" width="300px" >操作</td>	               
 	                </tr>
 	                </thead>
@@ -141,7 +141,7 @@
 	                <td th:switch="${obj.isnew}"><p th:case="'1'">是</p><p th:case="'0'">否</p></td>
 	                <td th:switch="${obj.ishot}"><p th:case="'1'">是</p><p th:case="'0'">否</p></td>
 	                <td th:switch="${obj.isnominate}"><p th:case="'1'">是</p><p th:case="'0'">否</p></td>	                             
-	               <!--  <td th:text="${obj.remark}">2asdfasdf</td> -->
+	                <td th:text="${obj.sorta}">2asdfasdf</td> 
 	                
 	                <td ><a th:href="@{/admin/video/movie_loads(id=${obj.id})}">预览</a>&nbsp;&nbsp;<a th:href="@{/admin/video/loadvideo(id=${obj.id})}">添加剧集</a>
 	                &nbsp;&nbsp;<a th:href="@{/admin/movie/movie_update_load(id=${obj.id})}">修改</a>&nbsp;&nbsp;
